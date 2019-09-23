@@ -18,7 +18,7 @@ be sure to *pull* an updated version every time you log in (see below).
 
 Each day you should refresh your workspace to get the most recently 
 released assignments.  To do this, right click on the `pull.sh` file in
-your student141 folder and select *Run* from the menu.  This can also
+your student141 folder and select *Run Code* from the menu.  This can also
 be done in a terminal using the following commands.
 
 ```{bash}
@@ -33,7 +33,7 @@ As you make changes to your code, be sure to save it frequently using
 *Ctrl-S* or the File -> Save menu option.  When you have finished a work
 session, or when you are ready to submit your work for grading, you will 
 need to upload it to the WWU code repository.  To do this, right click on
-the `push.sh` file in your workspace and select *Run* from the menu.
+the `push.sh` file in your workspace and select *Run Code* from the menu.
 This can also be done in a terminal using the following commands:
 
 ```{bash}
