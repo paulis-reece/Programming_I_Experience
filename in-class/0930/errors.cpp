@@ -33,9 +33,9 @@ int main() {
 
   c = 3.14159;
 
-  double d = 2 * radius * height * c + 2 * pow(2, radius);
+  double surface_area = 2 * radius * height * c + 2 * pow(2, radius);
 
-  cout << "The surface area is: " << d << endl;
+  cout << "The surface area is: " << surface_area << endl;
 
   return 0;
 }
