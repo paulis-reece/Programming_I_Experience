@@ -17,13 +17,25 @@
 using namespace std;
 
 int main() {
-cout<<"Enter the cylindar radius: "         ;
-int a; cin>>a;
-     cout<<"Enter the cylindar height: "    ;
-int b;
-cin>>b; double c;
-                                 c = 3.14159;
-double d = 2*a*b*c+2*pow(2,a);
-cout << "The surface area is: " << d << endl;
- return 0;
+  cout << "Enter the cylindar : ";
+
+  int radius;
+
+  cin >> radius;
+
+  cout << "Enter the cylindar: ";
+
+  int height;
+
+  cin >> height;
+
+  double c;
+
+  c = 3.14159;
+
+  double d = 2 * radius * height * c + 2 * pow(2, radius);
+
+  cout << "The surface area is: " << d << endl;
+
+  return 0;
 }

@@ -31,7 +31,7 @@ double yourMoney = money- childrensMoney * children / 100.0 ;
    // print out the results
    cout << endl;
    cout << "Give each child $" << childrensMoney/100.0;
-   cout << " and keep $" << money << " for yourself." << endl;
+   cout << " and keep $" << yourMoney << " for yourself." << endl;
 
    return 0;
 }
