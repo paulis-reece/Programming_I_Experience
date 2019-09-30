@@ -24,5 +24,6 @@ int b;
 cin>>b; double c;
                                  c = 3.14159;
 double d = 2*a*b*c+2*pow(2,a);
-cout >> "The surface area is: " << d << endl return 0; 
+cout << "The surface area is: " << d << endl;
+ return 0;
 }
