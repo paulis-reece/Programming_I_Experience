@@ -3,7 +3,7 @@
  * hw00:  A program to output an inspiring quote
  *
  * File Name: quote.cpp
- * Name:      ?
+ * Name:      Reece Reklai
  * Course:    CPTR 141
  *
  */
@@ -12,8 +12,8 @@
 using namespace std;
 
 int main() {
-   
-    // insert your code here
 
+    // insert your code here
+    cout << "It should be mandatory" << endl << "  that you" << endl << "    undestand computer science." << endl;
     return 0;
 }
