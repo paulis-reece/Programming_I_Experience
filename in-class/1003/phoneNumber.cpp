@@ -26,6 +26,7 @@ int main() {
   cin >> phone;
 
   // Display information
+  cout << "You entered " << phone.length() << " digits, the first was \"" << phone.at(0) << "\".";
 
   // Format the phone number
 
