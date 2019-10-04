@@ -29,6 +29,7 @@ int main() {
   cout << "You entered " << phone.length() << " digits, the first was \"" << phone.at(0) << "\".";
 
   // Format the phone number
+  cout << "You entered" << format.insert(509);
 
   // Display the various parts
 
