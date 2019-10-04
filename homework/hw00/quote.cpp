@@ -14,12 +14,10 @@ using namespace std;
 int main() {
 
     // insert your code here
-    cout << "```" << endl;
 
-    cout << "It should be mandatory" << endl << "  that you" << endl << "    undestand computer science." << endl << endl;
+    cout << "It should be mandatory" << endl << "  that you" << endl << "    undertand computer science." << endl << endl;
 
-    cout << "-" << "will.i.am" << endl;
+    cout <<  "-  "   << "will.i.am" << endl;
 
-    cout << "```" << endl;
     return 0;
 }
