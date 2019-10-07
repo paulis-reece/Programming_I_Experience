@@ -48,7 +48,7 @@ int main() {
 
   cout << "A whole " << ADJECTIVE1 << " " << NOUN << endl;
   cout << "A new " << ADJECTIVE2 << " point of view" << endl;
-  cout << "No one to tell us " << COMMAND << endl;
+  cout << "No one to tell us \"" <<  COMMAND << "\"" << endl;
   cout << "Or " << QUESTION << " to " << VERB << endl;
   cout << "Or say we're only " << VERBING << endl;
   cout << endl;
