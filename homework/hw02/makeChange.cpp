@@ -15,30 +15,53 @@ using namespace std;
 int main() {
 
   // define variables
-  double CostInDollarsCents = 13.59;
-  double AmountPaidInDollarsCents = 45.00;
-  double change;
-  int TwentyDollarBill = 2000;
-  int TenDollarBill = 1000;
-  int FiveDollarBill = 0;
-  int OneDollarBill = 100;
-  int Quarters = 25;
-  int Dimes = 10;
-  int Nickels = 5;
-  int Pennies = 1;
+  double FinalCost;
+  double AmountPaid;
+  double Change;
+  double TwentyDollarBill;
+  double TenDollarBill;
+  double FiveDollarBill;
+  double OneDollarBill;
+  double Quarters;
+  double Dimes;
+  double Nickels;
+  double Pennies;
 
   // Prompt for and collect input
   cout << fixed << showpoint << setprecision(2);
-  cout << "The cost in dollars and cents: " << CostInDollarsCents << endl;
-  cout << fixed << showpoint << setprecision(2);
-  cout << "The amount paid in dollars and cents: " << AmountPaidInDollarsCents
-       << endl;
-       cout << fixed << showpoint << setprecision(2);
-  cout << "Your change is: " << change << endl;
+  FinalCost = 13.59;
+ cout << "The cost is $" << FinalCost << " ." << endl;
+ AmountPaid = 45.00;
+ cout << "The amount paid is $" << AmountPaid << " ." << endl;
+
+
+
+
+
 
   // convert to cents and compute change
-  cout << fixed << showpoint << setprecision(2);
-  cout << change << (AmountPaidInDollarsCents - CostInDollarsCents);
+TwentyDollarBill = 20.00 * 1;
+TenDollarBill = 10.00 * 1;
+FiveDollarBill = 5.00 * 0;
+OneDollarBill = 1.00 * 1;
+Quarters = 0.25 * 1;
+Dimes = 0.10 * 1;
+Nickels = 0.5 * 1;
+Pennies = 0.1 * 1;
+Change = TwentyDollarBill + TenDollarBill + FiveDollarBill + OneDollarBill + Quarters + Dimes + Nickels + Pennies;
+cout << "Your change is: " << Change << endl;
+ cout << "twenty-dollar bill(1)" << endl;
+ cout << "ten-dollar bill(1)" << endl;
+ cout << "five-dollar bill(0)" << endl;
+ cout << "one-dollar bill(1)" << endl;
+ cout << "quarters(1)" << endl;
+cout << "dimes(1)" << endl;
+cout << "pennies(1)" << endl;
+
+
+
+
+
 
 
 
