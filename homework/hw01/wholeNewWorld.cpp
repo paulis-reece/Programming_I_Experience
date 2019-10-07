@@ -44,7 +44,7 @@ int main() {
        << "Enter a verb: "
        << "Enter a verb ending in 'ing': "
        << "Enter another adjective: "
-       << "Enter a preposition:" << endl;
+       << "Enter a preposition: " << endl;
 
   cout << "A whole " << ADJECTIVE1 << " " << NOUN << endl;
   cout << "A new " << ADJECTIVE2 << " point of view" << endl;
