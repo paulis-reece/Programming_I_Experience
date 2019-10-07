@@ -46,7 +46,7 @@ int main() {
   cout << "Enter another adjective: ";
   cout << "Enter a preposition: ";
 
-  cout << "A whole " << ADJECTIVE1 << " " << NOUN << endl;
+  cout << "A whole " << ADJECTIVE1 << NOUN << endl;
   cout << "A new " << ADJECTIVE2 << " point of view" << endl;
   cout << "No one to tell us \"" << COMMAND << "\"" << endl;
   cout << "Or " << QUESTION << " to " << VERB << endl;
