@@ -42,7 +42,7 @@ int main() {
   cout << "Enter a command: ";
   cout << "Enter a question word: ";
   cout << "Enter a verb: ";
-  cout << "Enter a verb in 'ing': ";
+  cout << "Enter a verb ending in 'ing': ";
   cout << "Enter another adjective: ";
   cout << "Enter a preposition: ";
 
