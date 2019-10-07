@@ -36,10 +36,19 @@ int main() {
   cin >> PREPOSITION;
 
   // print out the "song"
+  cout << "Enter an adjective: ";
+  cout << "Enter a Noun: ";
+  cout << "Enter another adjective: ";
+  cout << "Enter a command: ";
+  cout << "Enter a question word: ";
+  cout << "Enter a verb: ";
+  cout << "Enter a verb with 'ing': ";
+  cout << "Enter another adjective: ";
+  cout << "Enter a preposition: ";
 
   cout << "A whole " << ADJECTIVE1 << " " << NOUN << endl;
   cout << "A new " << ADJECTIVE2 << " point of view" << endl;
-  cout << "No one to tell us " << COMMAND << endl;
+  cout << "No one to tell us " << "COMMAND" << endl;
   cout << "Or " << QUESTION << " to " << VERB << endl;
   cout << "Or say we're only " << VERBING << endl;
   cout << endl;
@@ -47,8 +56,8 @@ int main() {
   cout << "A " << ADJECTIVE3 << " place I never knew" << endl;
   cout << "But now from way " << PREPOSITION << " here" << endl;
   cout << "It's crystal clear" << endl;
-  cout << "that now I'm in a whole " << ADJECTIVE1 << " " << NOUN
-       << " with you." << endl;
+  cout << "that now I'm in a whole " << ADJECTIVE1 << " " << NOUN;
+  cout << " with you." << endl;
 
   return 0;
 }
