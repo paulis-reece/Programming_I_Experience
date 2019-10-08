@@ -15,58 +15,46 @@ using namespace std;
 int main() {
 
   // define variables
-  double FinalCost;
-  double AmountPaid;
-  double Change;
-  double TwentyDollarBill;
-  double TenDollarBill;
-  double FiveDollarBill;
-  double OneDollarBill;
-  double Quarters;
-  double Dimes;
-  double Nickels;
-  double Pennies;
+  double Cost;
+  double Amountpaid;
+  int Change;
+  int Twentydollarbill;
+  int Tendollarbill;
+  int Fivedollarbill;
+  int Onedollarbill;
+  int Quarters;
+  int Dimes;
+  int Nickels;
+  int Pennies;
 
   // Prompt for and collect input
-  cout << fixed << showpoint << setprecision(2);
-  FinalCost = 13.59;
- cout << "The cost is $" << FinalCost << " ." << endl;
- AmountPaid = 45.00;
- cout << "The amount paid is $" << AmountPaid << " ." << endl;
-
-
-
-
-
+  cout << "Enter the cost in dollars and cents: $";
+  cin >> Cost;
+  cout << "Enter the amount paid in dollars and cents: $";
+  cin >> Amountpaid;
 
   // convert to cents and compute change
-TwentyDollarBill = 20.00 * 1;
-TenDollarBill = 10.00 * 1;
-FiveDollarBill = 5.00 * 0;
-OneDollarBill = 1.00 * 1;
-Quarters = 0.25 * 1;
-Dimes = 0.10 * 1;
-Nickels = 0.5 * 1;
-Pennies = 0.1 * 1;
-Change = TwentyDollarBill + TenDollarBill + FiveDollarBill + OneDollarBill + Quarters + Dimes + Nickels + Pennies;
-cout << "Your change is: " << Change << endl;
- cout << "twenty-dollar bill(1)" << endl;
- cout << "ten-dollar bill(1)" << endl;
- cout << "five-dollar bill(0)" << endl;
- cout << "one-dollar bill(1)" << endl;
- cout << "quarters(1)" << endl;
-cout << "dimes(1)" << endl;
-cout << "pennies(1)" << endl;
-
-
-
-
-
-
-
-
+  Change = Amountpaid - Cost;
+  Twentydollarbill = Change - 20;
+  Tendollarbill = Twentydollarbill - 10;
+  Fivedollarbill = Tendollarbill - 0;
+  Onedollarbill = Fivedollarbill - 1;
+  Quarters = Onedollarbill - 1 / 4;
+  Dimes = Quarters - 1 / 10;
+  Nickels = Dimes - 1 / 20;
+  Pennies = Nickels - 1 / 100;
+  Change = Pennies;
 
   // now display number of dollars and coins
+  cout << "Your change is: $" << Change << endl;
+  cout << "- twenty-dollar bills: 1" << endl;
+  cout << "  - ten-dollar bills: 1" << endl;
+  cout << " - five-dollar bills: 0" << endl;
+  cout << " - one-dollar bills: 1" << endl;
+  cout << "- quarters: 1" << endl;
+  cout << " - dimes: 1" << endl;
+  cout << " - nickels: 1" << endl;
+  cout << "- pennies: 1" << endl;
 
   return 0;
 }
