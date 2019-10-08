@@ -35,26 +35,26 @@ int main() {
 
   // convert to cents and compute change
   Change = Amountpaid - Cost;
-  Twentydollarbill = Change - 20;
-  Tendollarbill = Twentydollarbill - 10;
-  Fivedollarbill = Tendollarbill - 0;
-  Onedollarbill = Fivedollarbill - 1;
-  Quarters = Onedollarbill - 1 / 4;
-  Dimes = Quarters - 1 / 10;
-  Nickels = Dimes - 1 / 20;
-  Pennies = Nickels - 1 / 100;
+  Twentydollarbill = Change - 2000 / 100;
+  Tendollarbill = Change- Twentydollarbill * 1000 / 100;
+  Fivedollarbill = Change - Tendollarbill * 500 / 100;
+  Onedollarbill = Change - Fivedollarbill * 100 / 100;
+  Quarters = Change - Onedollarbill * 25/100;
+  Dimes = Change -Quarters * 10/100;
+  Nickels = Change-Dimes * 5/100;
+  Pennies = Change - Nickels * 1/100;
   Change = Pennies;
 
   // now display number of dollars and coins
   cout << "Your change is: $" << Change << endl;
-  cout << "- twenty-dollar bills: 1" << endl;
-  cout << "  - ten-dollar bills: 1" << endl;
-  cout << " - five-dollar bills: 0" << endl;
-  cout << " - one-dollar bills: 1" << endl;
-  cout << "- quarters: 1" << endl;
-  cout << " - dimes: 1" << endl;
-  cout << " - nickels: 1" << endl;
-  cout << "- pennies: 1" << endl;
+  cout << "- twenty-dollar bills: " << Twentydollarbill << endl;
+  cout << "- ten-dollar bills: " << Tendollarbill << endl;
+  cout << "- five-dollar bills: " << Fivedollarbill << endl;
+  cout << "- one-dollar bills: " << Onedollarbill << endl;
+  cout << "- quarters: " << Quarters << endl;
+  cout << "- dimes: " << Dimes << endl;
+  cout << "- nickels: " << Nickels << endl;
+  cout << "- pennies: " << Pennies << endl;
 
   return 0;
 }
