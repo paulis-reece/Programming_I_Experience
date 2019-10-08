@@ -34,16 +34,32 @@ int main() {
   cin >> Amountpaid;
 
   // convert to cents and compute change
-  Change = Amountpaid - Cost;
-  Twentydollarbill = Change - 2000 / 100;
-  Tendollarbill = Change- Twentydollarbill * 1000 / 100;
-  Fivedollarbill = Change - Tendollarbill * 500 / 100;
-  Onedollarbill = Change - Fivedollarbill * 100 / 100;
-  Quarters = Change - Onedollarbill * 25/100;
-  Dimes = Change -Quarters * 10/100;
-  Nickels = Change-Dimes * 5/100;
-  Pennies = Change - Nickels * 1/100;
-  Change = Pennies;
+  Amountpaid = Amountpaid * 100;
+  Cost = Cost * 100;
+ Change = Amountpaid - Cost;
+  Twentydollarbill = Change / 2000;
+  Tendollarbill = (Change - (Twentydollarbill * 2000)) / 1000;
+
+  Fivedollarbill = (Change - ((Tendollarbill * 1000) + (Twentydollarbill * 2000))) / 500;
+
+  Onedollarbill =
+      (Change - (((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
+                 (Fivedollarbill * 500)))) / 100;
+  Quarters = (Change - ((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
+              (Fivedollarbill * 500) + (Onedollarbill * 100))))) /
+             25;
+  Dimes = (Change - ((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
+           (Fivedollarbill * 500) + (Onedollarbill * 100) + (Quarters * 25))))) /
+          10;
+  Nickels = (Change - (((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
+             (Fivedollarbill * 500) + (Onedollarbill * 100) + (Quarters * 25) +
+             (Dimes * 10)))))) /
+            5;
+  Pennies = (Change - (((((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
+             (Fivedollarbill * 500) + (Onedollarbill * 100) + (Quarters * 25) +
+             (Dimes * 10) + (Nickels* 5)))))))) /
+            1;
+
 
   // now display number of dollars and coins
   cout << "Your change is: $" << Change << endl;
