@@ -17,7 +17,7 @@ int main() {
   // define variables
   double Cost;
   double Amountpaid;
-  int Change;
+  double Change;
   int Twentydollarbill;
   int Tendollarbill;
   int Fivedollarbill;
@@ -63,7 +63,7 @@ int main() {
       (Change - (((((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
                       (Fivedollarbill * 500) + (Onedollarbill * 100) +
                       (Quarters * 25) + (Dimes * 10) + (Nickels * 5)))))))) /
-      1;
+    100;
 
   // now display number of dollars and coins
   cout << "Your change is: $" << Change << endl;
