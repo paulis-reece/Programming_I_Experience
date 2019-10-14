@@ -17,7 +17,7 @@ int main() {
   // define variables
   double Cost;
   double Amountpaid;
-  double finalResult = 100.00;
+  double finalResult = 100;
   int Change;
   int Twentydollarbill;
   int Tendollarbill;
@@ -48,7 +48,7 @@ int main() {
   Pennies = (Change % 2000 % 1000 % 500 % 100 % 25 % 10 % 5) / 1;
 
   // now display number of dollars and coins
-  cout << "Your change is: $" << Change / finalResult << endl;
+  cout << "Your change is: " << endl;;
   cout << "  - twenty-dollar bills: " << Twentydollarbill << endl;
   cout << "  - ten-dollar bills: " << Tendollarbill << endl;
   cout << "  - five-dollar bills: " << Fivedollarbill << endl;
