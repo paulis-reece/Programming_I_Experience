@@ -32,6 +32,7 @@ int main() {
   cin >> Cost;
   cout << "Enter the amount paid in dollars and cents: $";
   cin >> Amountpaid;
+  cout << endl;
 
   // convert to cents and compute change
   Amountpaid = Amountpaid * 100;
