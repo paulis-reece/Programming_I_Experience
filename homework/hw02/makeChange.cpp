@@ -17,7 +17,7 @@ int main() {
   // define variables
   double Cost;
   double Amountpaid;
-  double Change;
+ int Change;
   int Twentydollarbill;
   int Tendollarbill;
   int Fivedollarbill;
@@ -37,36 +37,35 @@ int main() {
   Amountpaid = Amountpaid * 100;
   Cost = Cost * 100;
   Change = Amountpaid - Cost;
-  Twentydollarbill = Change / 2000;
-  Tendollarbill = (Change - (Twentydollarbill * 2000)) / 1000;
+ Twentydollarbill = Change / 2000;
+Tendollarbill = ( Change % 2000 ) / 1000;
+Fivedollarbill = (Change % 2000 % 1000 ) / 500;
+Onedollarbill = (Change % 2000 % 1000 % 500) / 100;
+Quarters = ( Change % 2000 % 1000 % 500 % 100) / 25;
+Dimes = (Change % 2000 % 1000 % 500 % 100 % 25) / 10;
+Nickels = ( Change % 2000 % 1000 % 500 % 100 % 25 % 10) / 5;
+Pennies = (Change % 2000 % 1000 % 500 % 100 % 25 % 10 % 5) / 1;
 
-  Fivedollarbill =
-      (Change - ((Tendollarbill * 1000) + (Twentydollarbill * 2000))) / 500;
 
-  Onedollarbill =
-      (Change - (((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
-                  (Fivedollarbill * 500)))) /
-      100;
-  Quarters = (Change - ((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
-                          (Fivedollarbill * 500) + (Onedollarbill * 100))))) /
-             25;
-  Dimes =
-      (Change -
-       ((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
-          (Fivedollarbill * 500) + (Onedollarbill * 100) + (Quarters * 25))))) /
-      10;
-  Nickels = (Change - (((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
-                          (Fivedollarbill * 500) + (Onedollarbill * 100) +
-                          (Quarters * 25) + (Dimes * 10)))))) /
-            5;
-  Pennies =
-      (Change - (((((((Tendollarbill * 1000) + (Twentydollarbill * 2000) +
-                      (Fivedollarbill * 500) + (Onedollarbill * 100) +
-                      (Quarters * 25) + (Dimes * 10) + (Nickels * 5)))))))) /
-    100;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // now display number of dollars and coins
-  cout << "Your change is: $" << Change << endl;
+  cout << "Your change is: $" << (Change/100) << "." <<  (Change % 100) << endl;
   cout << "  - twenty-dollar bills: " << Twentydollarbill << endl;
   cout << "  - ten-dollar bills: " << Tendollarbill << endl;
   cout << "  - five-dollar bills: " << Fivedollarbill << endl;
