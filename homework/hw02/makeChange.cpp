@@ -17,7 +17,6 @@ int main() {
   // define variables
   double Cost;
   double Amountpaid;
-  double finalResult = 100;
   int Change;
   int Twentydollarbill;
   int Tendollarbill;
