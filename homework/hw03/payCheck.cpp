@@ -18,8 +18,7 @@ int main() {
   const double hoursWorked = 18.50;
   const double withHoldingsSS = (0.062);
   const double withholdingsMedicare = (0.0145);
-  const double withholdingsFederalTax =
-      (0.15); // 1% percent less for each dependent
+  const double withholdingsFederalTax = (0.15);
   const double withholdingsFlat = 10;
   double grossPay;
   double withholdings;
@@ -35,6 +34,7 @@ int main() {
   cin >> numDependents;
 
   // compute gross pay
+  cout << fixed << showpoint << setprecision(2);
   if (hours < OT_HOURS) {
     grossPay = hoursWorked * hours;
     withholdings =
