@@ -23,7 +23,6 @@ int main() {
   double grossPay;
   double withholdings;
   double Netpay;
-  int OverTime;
   int hours;
   int OT_HOURS = 40;
   int numDependents;
@@ -43,8 +42,7 @@ int main() {
         withholdingsFlat;
     Netpay = grossPay - withholdings;
   } else {
-    OverTime = 9.25 * (hours - OT_HOURS);
-    grossPay = hoursWorked * hours + OverTime;
+    grossPay = hoursWorked * hours + ((hours - OT_HOURS) * 9.25);
     withholdings =
         (grossPay * (withHoldingsSS + withholdingsMedicare +
                      (withholdingsFederalTax - (0.01 * numDependents)))) +
