@@ -23,7 +23,7 @@ int main() {
   double grossPay;
   double withholdings;
   double Netpay;
-  int hours;
+  double hours;
   int OT_HOURS = 40;
   int numDependents;
 
