@@ -43,15 +43,15 @@ int main() {
   srand(Seed);
   Random = rand() % 5 + 1;
   if (Random == 1) {
-    cout << "I choose: " << number1 << endl;
+    cout << "I choose " << number1 << endl;
   } else if (Random == 2) {
-    cout << "I choose: " << number2 << endl;
+    cout << "I choose " << number2 << endl;
   } else if (Random == 3) {
-    cout << "I choose: " << number3 << endl;
+    cout << "I choose " << number3 << endl;
   } else if (Random == 4) {
-    cout << "I choose: " << number4 << endl;
+    cout << "I choose " << number4 << endl;
   } else if (Random == 5) {
-    cout << "I choose: " << number5 << endl;
+    cout << "I choose " << number5 << endl;
   }
 
   return 0;
