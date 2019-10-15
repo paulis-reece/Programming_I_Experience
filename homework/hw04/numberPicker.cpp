@@ -24,22 +24,24 @@ int main() {
 
   cout << "Enter Random Seed: ";
   cin >> Seed;
+  cout << endl;
 
   cout << endl << "Enter First Number: ";
   cin >> number1;
-
+  cout << endl;
   cout << "Enter Second Number: ";
   cin >> number2;
+  cout << endl;
 
   cout << "Enter Third Number: ";
   cin >> number3;
-
+  cout << endl;
   cout << "Enter Fourth Number: ";
   cin >> number4;
-
+  cout << endl;
   cout << "Enter Fifth Number: ";
   cin >> number5;
-
+  cout << endl;
   srand(Seed);
   Random = rand() % 5 + 1;
   if (Random == 1) {
