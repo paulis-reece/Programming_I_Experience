@@ -49,7 +49,7 @@ int main() {
         withholdingsFlat;
     Netpay = grossPay - withholdings;
   }
-  cout << "Your gross pay is: $" << grossPay << endl;
+  cout << endl << "Your gross pay is: $" << grossPay << endl;
   cout << "The withholdings are: $" << withholdings << endl;
   cout << "So that your net pay is: $" << Netpay << endl;
 
