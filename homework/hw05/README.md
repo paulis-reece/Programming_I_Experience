@@ -11,7 +11,7 @@ In this homework you will use multiple branching statements (if, if/else, if/els
 
 Your program should prompt the user to enter the answers to these questions, and then indicate if the user should walk or take the bus based on the decision tree shown below.
 
-![](https://cs.wallawalla.edu/courses/cptr141/hw05_tree.png){ width=550px }
+<a href="https://cs.wallawalla.edu/courses/cptr141/hw05_tree.png" width="500"/>
 
 
 
