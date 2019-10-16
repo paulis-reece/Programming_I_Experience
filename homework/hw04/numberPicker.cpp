@@ -26,34 +26,32 @@ int main() {
   cin >> Seed;
   cout << endl;
 
-  cout << endl << "Enter First Number: ";
+  cout << "Enter First Number: ";
   cin >> number1;
-  cout << endl;
+
   cout << "Enter Second Number: ";
   cin >> number2;
-  cout << endl;
 
   cout << "Enter Third Number: ";
   cin >> number3;
-  cout << endl;
   cout << "Enter Fourth Number: ";
   cin >> number4;
-  cout << endl;
+
   cout << "Enter Fifth Number: ";
   cin >> number5;
-  cout << endl;
+
   srand(Seed);
   Random = rand() % 5 + 1;
   if (Random == 1) {
-    cout << "I choose " << number1 << endl;
+    cout << "I choose " << number1 << endl << endl;
   } else if (Random == 2) {
-    cout << "I choose " << number2 << endl;
+    cout << "I choose " << number2 << endl << endl;
   } else if (Random == 3) {
-    cout << "I choose " << number3 << endl;
+    cout << "I choose " << number3 << endl << endl;
   } else if (Random == 4) {
-    cout << "I choose " << number4 << endl;
+    cout << "I choose " << number4 << endl << endl;
   } else if (Random == 5) {
-    cout << "I choose " << number5 << endl;
+    cout << "I choose " << number5 << endl << endl;
   }
 
   return 0;
