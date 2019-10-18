@@ -1,0 +1,25 @@
+Name : Reece Reklai
+CPTR 141:  Project 1 Hw
+
+Instructions    |   Quantity of A (Max 4 ounces)    |   Quantity of B (Max 9 ounces)    |
+-----------------------------------------------------------------------------------------
+Start           |               0                   |                  0                |
+Fill B          |               0                   |                  9                |
+B -> A          |               4                   |                  5                |
+Empty A         |               0                   |                  5                |
+B ->  A         |               4                   |                  1                |
+Empty A         |               0                   |                  1                |
+B ->  A         |               1                   |                  0                |
+Fill B          |               1                   |                  9                |
+B -> A          |               4                   |                  6                |
+Empty A         |               0                   |                  6                |
+B -> A          |               4                   |                  2                |
+Empty A         |               0                   |                  2                |
+B -> A          |               2                   |                  0                |
+Fill B          |               2                   |                  9                |
+B -> A          |               4                   |                  7                |
+Empty A         |               0                   |                  7                |
+B -> A          |               4                   |                  3                |
+
+    The general process for any give two containers is: fill larger container, transfer it to smaller container, empty smaller container, transfer to small container, empty small container, transfer to small container and repeat the process from the beginning. 
+ This process keeps going until both containers make a sum of the required volume, in this case its seven ounces. As long as the sum is reached, the process can come to a halt in the beginning, midway, or end.
