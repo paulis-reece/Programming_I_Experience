@@ -40,15 +40,43 @@ int main() {
 
   // add your switch statement here to display the correct
   //   type of problem and compute the correct answer
+  char operation;
 
   /* CODE GOES HERE */
-   
+  switch(choice){
+      case 1:
+
+
+  // Switch for the user choice
+ // 1 - Addition problem
+  //Print type, print problem, collect user answer
+  cout << "Addition Problem" << endl;
+  operation =  '+';
+  correct = x + y;
+  break;
+
+  case 2:
+
+  //2 - Subtraction problem
+  cout << "Subtraction Problem" << endl;
+  operation = '-';
+  correct = x-y;
+  break;
+  //Print type, print problem, collect user answer
+  //3 -  Multiplication problem
+  case 3:
+   cout << "Multiplication Problem" << endl;
+   operation =  '*';
+  break;
+  }
+  //Print type, print problem, collect user answer
+
   // check the answer and dsiplay result
   if (ans == correct) {
     cout << endl << "Congratulations! You got the right answer." << endl;
-  } else {        
+  } else {
     cout << "The correct answer is: " << correct << endl;
-  }   
+  }
 
   return 0;
 }

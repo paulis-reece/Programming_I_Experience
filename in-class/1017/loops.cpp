@@ -23,7 +23,13 @@ int main() {
   // use the while loop to count
 
   /* YOUR CODE GOES HERE */
-   
+  while(counter < limit){
+      counter = counter + 1;
+      sum += counter;
+      cout << " " << counter;
+
+  }
+
   // print out the final sum
   cout << endl
        << endl
