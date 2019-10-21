@@ -15,22 +15,18 @@ using namespace std;
 
 int main() {
   int choice;
-  int time;
-  int numBooksCarry;
   int minutes;
   int books;
 
   /* YOUR CODE GOES HERE */
+  cout << "Should you Walk or Ride?  Let's find out!" << endl;
   cout << "a. What is the weather like?" << endl;
   cout << "   1 = Hot and Dry" << endl;
   cout << "   2 = Cool and Dry" << endl;
   cout << "   3 = Rainy" << endl;
-  cout << "Enter choice: ";
+  cout << "Enter Choice: ";
   cin >> choice;
   switch (choice) {
-  case 3:
-    cout << "You had better ride the bus to school.";
-    break;
   case 1:
     cout << "b. How much time do you have, in minutes? ";
     cin >> minutes;
@@ -63,7 +59,10 @@ int main() {
         break;
       }
     }
-  }
 
+  case 3:
+    cout << "You had better ride the bus to school.";
+    break;
+  }
   return 0;
 }
