@@ -31,6 +31,7 @@ int main() {
     cout << "b. How much time do you have, in minutes? ";
     cin >> minutes;
     if (minutes < 30) {
+      cout << endl;
       cout << "You had better ride the bus to school.";
     } else if (minutes >= 30) {
       cout << "c. How many books do you have? ";
@@ -48,6 +49,7 @@ int main() {
     cout << "b. How much time do you have, in minutes? ";
     cin >> minutes;
     if (minutes < 20) {
+      cout << endl;
       cout << "You had better ride the bus to school.";
     } else if (minutes >= 20) {
       cout << "c. How many books do you have? ";
