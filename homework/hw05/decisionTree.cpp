@@ -26,6 +26,7 @@ int main() {
   cout << "   3 = Rainy" << endl;
   cout << "Enter Choice: ";
   cin >> choice;
+  cout << endl;
   switch (choice) {
   case 1:
     cout << "b. How much time do you have, in minutes? ";
@@ -35,14 +36,13 @@ int main() {
     } else if (minutes >= 30) {
       cout << "c. How many books do you have? ";
       cin >> books;
-      if (books <= 2) {
+     if (books <= 2) {
         cout << "You should walk to school.";
-      }
-    } else if (books > 2) {
+      } else {
       cout << "You had better ride the bus to school.";
+     }
     }
-      break;
-
+    break;
 
   case 2:
     cout << "b. How much time do you have, in minutes? ";
@@ -54,12 +54,12 @@ int main() {
       cin >> books;
       if (books <= 4) {
         cout << "You should walk to school.";
-      }
-    } else if (books > 4) {
-      cout << "You had better ride the bus to school.";
-    }
-      break;
+     } else {
 
+      cout << "You had better ride the bus to school.";
+     }
+     }
+    break;
 
   case 3:
     cout << "You had better ride the bus to school.";
