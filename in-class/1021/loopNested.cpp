@@ -3,7 +3,7 @@
  * In-Class Exercises:  Assignment for loop conversion
  *
  * File Name: loops.cpp
- * Username:  ?
+ * Username:  Reece Reklai
  * Username:  ?
  * Course:    CPTR 141
  * Date:      @@date@@

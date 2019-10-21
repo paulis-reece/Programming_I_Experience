@@ -16,12 +16,16 @@ int main() {
 
   int num(2), accumulator(0);
   while (num < 20) {
+
+
     num++;
     if (num == 10 || num == 11) {
+
       // termination statement
-    }
+     break; }
     accumulator += num;
   }
+
   cout << "The sum is " << accumulator << endl;
 
   return 0;
