@@ -31,34 +31,35 @@ int main() {
     cout << "b. How much time do you have, in minutes? ";
     cin >> minutes;
     if (minutes < 30) {
-      cout << endl;
       cout << "You had better ride the bus to school.";
     } else if (minutes >= 30) {
       cout << "c. How many books do you have? ";
       cin >> books;
       if (books <= 2) {
         cout << "You should walk to school.";
-      } else if (books > 2)
-        cout << "You had better ride the bus to school.";
-      break;
+      }
+    } else if (books > 2) {
+      cout << "You had better ride the bus to school.";
     }
+      break;
+
 
   case 2:
     cout << "b. How much time do you have, in minutes? ";
     cin >> minutes;
     if (minutes < 20) {
-      cout << endl;
       cout << "You had better ride the bus to school.";
     } else if (minutes >= 20) {
       cout << "c. How many books do you have? ";
       cin >> books;
       if (books <= 4) {
         cout << "You should walk to school.";
-      } else if (books > 4) {
-        cout << "You had better ride the bus to school.";
-        break;
       }
+    } else if (books > 4) {
+      cout << "You had better ride the bus to school.";
     }
+      break;
+
 
   case 3:
     cout << "You had better ride the bus to school.";
