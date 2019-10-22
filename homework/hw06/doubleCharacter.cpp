@@ -13,16 +13,30 @@
 using namespace std;
 
 int main() {
-    int word;
-    string wordLetter;
 
+  string word;
+  int counter;
+  bool letters = 0;
 
-cout << "Welcome to the DoubleChecker(TM) word checker" << endl;
-cout << "=============================================" << endl;
-cout << "Enter a word to check: ";
-cin >> word;
+  cout << "Welcome to the DoubleChecker(TM) word checker" << endl;
+  cout << "=============================================" << endl;
+  cout << "Enter a word to check: ";
+  cin >> word;
+
   /* YOUR CODE GOES HERE */
+  for (int i = 0; i <= word.size(); i++)
+    if (word.at(i) == word.at(i + 1)) {
+      letters = 1;
+      break;
+    }
+
+  if (letters == 1) {
+    cout << endl;
+    cout << "There are double characters in the word " << word << endl;
+  } else if (letters == 0) {
+    cout << endl;
+    cout << "I could not find any double characters." << endl;
+  }
 
   return 0;
-
 }
