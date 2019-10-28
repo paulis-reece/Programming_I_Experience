@@ -16,7 +16,7 @@ int main() {
 
   string word;
   int counter;
-  bool letters = 0;
+  bool letters;
 
   cout << "Welcome to the DoubleChecker(TM) word checker" << endl;
   cout << "=============================================" << endl;
@@ -24,11 +24,10 @@ int main() {
   cin >> word;
 
   /* YOUR CODE GOES HERE */
-  for (int i = 0; i <= word.size(); i++)
-    if (word.at(i) == word.at(i + 1)) {
+  for (int i = 1; i <= word.size(); i++)
+    if (word.at(0) == word.at(i - 1)) {
       letters = 1;
-      break;
-    }
+      break;}
 
   if (letters == 1) {
     cout << endl;

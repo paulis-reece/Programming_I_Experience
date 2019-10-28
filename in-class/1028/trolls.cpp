@@ -18,14 +18,26 @@ int main() {
 
   // define your variables here
   const int NUM = 5;
+  vector<double>prices(NUM);
 
   // loop to collect information
   for (int i = 0; i < NUM; i++) {
-  }
+      cout << "Enter Price: " << i + 1 << ": ";
+      cin >> prices.at(i);
 
+
+  }
+cout << "The prices are: ";
   // loop to print out prices
   for (int i = 1; i < NUM; i++) {
+      cout << prices.at(i);
+      if(i >= NUM - 1){
+          continue;
   }
-
+  cout << ", ";
+  if(i <= NUM - 1){
+      cout << "and";
+  }
+  }
   return 0;
 }
