@@ -16,7 +16,7 @@ int main() {
 
   string word;
   int counter;
-  bool letters;
+  bool containsDoubles;
 
   cout << "Welcome to the DoubleChecker(TM) word checker" << endl;
   cout << "=============================================" << endl;
@@ -24,15 +24,18 @@ int main() {
   cin >> word;
 
   /* YOUR CODE GOES HERE */
-  for (int i = 1; i <= word.size(); i++)
-    if (word.at(0) == word.at(i - 1)) {
-      letters = 1;
-      break;}
+  for (int i = 1; i <= word.size() - 1; i++) {
+    containsDoubles = false;
+    if (word.at(i) == word.at(i - 1)) {
+      containsDoubles = true;
+      break;
+    }
+  }
 
-  if (letters == 1) {
+  if (containsDoubles == 1) {
     cout << endl;
     cout << "There are double characters in the word " << word << endl;
-  } else if (letters == 0) {
+  } else if (containsDoubles == 0) {
     cout << endl;
     cout << "I could not find any double characters." << endl;
   }

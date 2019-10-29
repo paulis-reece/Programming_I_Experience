@@ -13,32 +13,28 @@
 using namespace std;
 
 int main() {
-  int range;
-  int remainders;
-  int i = 2;
-  bool count;
-  int r;
+  int lim;
+  bool isPrime;
 
   cout << "Premium Prime Printer (twice the primes, half the time)" << endl;
   cout << "========================================================" << endl;
   cout << "Enter Integer Upper Limit (3 or more): ";
-  cin >> range;
-
-  while (i <= range) {
-    for (int r = 2; r <= i / 2; r++) {
-      if (r == 1) {
-        count = true;
-      }
-      if (i % r == 0) {
-        count = false;
-        break;
+  cin >> lim;
+  while (lim < 3) {
+    cout << "Error!" << endl;
+    cin >> lim;
+  }
+  for (int i = 2; i <= lim; i++) {
+    isPrime = true;
+    for (int j = 2; j < i; j++) {
+      if (i % j == 0) {
+        isPrime = false;
       }
     }
-    i++;
+    if (isPrime == true) {
+      cout << i << " is a prime number." << endl;
+    }
   }
 
-  if (count == true) {
-    cout << i << " is a prime number." << endl;
-  }
   return 0;
 }
