@@ -22,9 +22,11 @@ int main() {
   ;
   cin >> lim;
   while (lim < 3) {
-    cout << "Error!  Please enter a number bigger than 2." << endl
-         << "Enter Integer Upper Limit (3 or more): " << endl;
-    cin >> lim;
+    if (lim < 3) {
+      cout << "Error!  Please enter a number bigger than 2." << endl
+           << "Enter Integer Upper Limit (3 or more): " << endl;
+      cin >> lim;
+    }
   }
   for (int i = 2; i <= lim; i++) {
     isPrime = true;
