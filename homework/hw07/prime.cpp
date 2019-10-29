@@ -37,7 +37,7 @@ int main() {
     }
     if (isPrime == true) {
 
-      cout << i << " is a prime number." << endl;
+      cout << endl << i << " is a prime number.";
     }
   }
   return 0;
