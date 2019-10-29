@@ -18,7 +18,7 @@ int main() {
 
   cout << "Premium Prime Printer (twice the primes, half the time)" << endl;
   cout << "=======================================================" << endl;
-  cout << "Enter Integer Upper Limit (3 or more): ";
+  cout << "Enter Integer Upper Limit (3 or more): " << endl;
   cin >> lim;
 
   while (lim < 3) {
@@ -27,13 +27,13 @@ int main() {
       cout << endl << "Enter Integer Upper Limit (3 or more): " << endl;
       cin >> lim;
     }
-    }
-    for (int i = 2; i <= lim; i++) {
-      isPrime = true;
-      for (int j = 2; j < i; j++) {
-        if (i % j == 0) {
-          isPrime = false;
-        }
+  }
+  for (int i = 2; i <= lim; i++) {
+    isPrime = true;
+    for (int j = 2; j < i; j++) {
+      if (i % j == 0) {
+        isPrime = false;
+      }
     }
     if (isPrime == true) {
 
