@@ -18,28 +18,27 @@ int main() {
 
   cout << "Premium Prime Printer (twice the primes, half the time)" << endl;
   cout << "=======================================================" << endl;
-  cout << "Enter Integer Upper Limit (3 or more): " << endl;
-  ;
+  cout << "Enter Integer Upper Limit (3 or more):";
   cin >> lim;
+
   while (lim < 3) {
     if (lim < 3) {
-      cout << "Error!  Please enter a number bigger than 2." << endl;
-     cout << "Enter Integer Upper Limit (3 or more): ";
+      cout << "Error!  Please enter a number bigger than 2.";
+      cout << "Enter Integer Upper Limit (3 or more): " << endl;
       cin >> lim;
     }
-  }
-  for (int i = 2; i <= lim; i++) {
-    isPrime = true;
-    for (int j = 2; j < i; j++) {
-      if (i % j == 0) {
-        isPrime = false;
-      }
+    }
+    for (int i = 2; i <= lim; i++) {
+      isPrime = true;
+      for (int j = 2; j < i; j++) {
+        if (i % j == 0) {
+          isPrime = false;
+        }
     }
     if (isPrime == true) {
 
       cout << i << " is a prime number." << endl;
     }
   }
-
   return 0;
 }
