@@ -17,11 +17,11 @@ int main() {
   bool isPrime;
 
   cout << "Premium Prime Printer (twice the primes, half the time)" << endl;
-  cout << "========================================================" << endl;
+  cout << "=======================================================" << endl;
   cout << "Enter Integer Upper Limit (3 or more): ";
   cin >> lim;
   while (lim < 3) {
-    cout << "Error! Please enter a number bigger than 2. "
+    cout << "Error!  Please enter a number bigger than 2." << endl
          << "Enter Integer Upper Limit (3 or more): " << endl;
     cin >> lim;
   }
@@ -33,6 +33,7 @@ int main() {
       }
     }
     if (isPrime == true) {
+
       cout << i << " is a prime number." << endl;
     }
   }
