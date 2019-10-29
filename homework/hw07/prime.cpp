@@ -21,7 +21,8 @@ int main() {
   cout << "Enter Integer Upper Limit (3 or more): ";
   cin >> lim;
   while (lim < 3) {
-    cout << "Error!" << endl;
+    cout << "Error! Please enter a number bigger than 2. "
+         << "Enter Integer Upper Limit (3 or more): " << endl;
     cin >> lim;
   }
   for (int i = 2; i <= lim; i++) {
