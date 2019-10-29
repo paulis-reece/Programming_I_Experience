@@ -18,13 +18,13 @@ int main() {
 
   cout << "Premium Prime Printer (twice the primes, half the time)" << endl;
   cout << "=======================================================" << endl;
-  cout << "Enter Integer Upper Limit (3 or more):";
+  cout << "Enter Integer Upper Limit (3 or more): ";
   cin >> lim;
 
   while (lim < 3) {
     if (lim < 3) {
       cout << "Error!  Please enter a number bigger than 2.";
-      cout << "Enter Integer Upper Limit (3 or more): " << endl;
+      cout << endl << "Enter Integer Upper Limit (3 or more): " << endl;
       cin >> lim;
     }
     }
