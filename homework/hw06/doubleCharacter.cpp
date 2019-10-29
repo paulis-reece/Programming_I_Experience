@@ -34,7 +34,7 @@ int main() {
 
   if (containsDoubles == 1) {
     cout << endl;
-    cout << "There are double characters in the word." << word << endl;
+    cout << "There are double characers in the word " << word << "." << endl;
   } else if (containsDoubles == 0) {
     cout << endl;
     cout << "I could not find any double characters." << endl;
