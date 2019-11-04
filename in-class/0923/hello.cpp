@@ -24,7 +24,6 @@ int Value(char roman) {
  return roman;
 }
 
-/*
 string romanToInt(string rom1) {
   int i;
   int FirstIndex;
@@ -33,7 +32,7 @@ string romanToInt(string rom1) {
   ans = 0;
   previousVal = 0;
   FirstIndex = rom1.at(0);
-  for (i = firstIndex; i <= rom1.length - 1; i++) {
+  for (i = FirstIndex; i <= rom1.length() - 1; i++) {
     if (Value(rom1.at(i)) >= previousVal) {
       ans = ans + Value(rom1.at(i));
     } else {
@@ -44,7 +43,6 @@ string romanToInt(string rom1) {
   rom1 = previousVal;
   return rom1;
 }
-*/
 
 int main() {
   char rom1;

@@ -8,20 +8,14 @@
 
 #include <cmath>
 #include <iostream>
+#include "factorialFunction.h"
 using namespace std;
 
 // function definition
-long factorial(int n) {
-    long result = 1;
-    while (n--) {
-        result *= n;
-    }
-    return result;
-}
 
 // main program
 int main() {
-   
+
     int n = 0;
     cout << "Enter a number n: ";
     cin >> n;
