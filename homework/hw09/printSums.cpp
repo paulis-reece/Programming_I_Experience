@@ -4,15 +4,44 @@
  *       using functions
  *
  * File Name:  printSums.cpp
- * Name:       ?
+ * Name:       Reece Reklai
  * Course:     CPTR 141
  *
  */
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // function definitions
+void printSumAll(int num) {
+  int sumALL = 0;
+  for (int i = 1; i <= num; i++) {
+    sumALL += i;
+  }
+  cout << "Sum of all: " << sumALL << endl;
+}
+void printSumEven(int num) {
+  int sumALL = 0;
+  for (int i = 1; i <= num; i++) {
+    if (i % 2 == 0) {
+      sumALL += i;
+    } else {
+    }
+  }
+  cout << "Sum of evens: " << sumALL << endl;
+}
+
+void printSumOdd(int num) {
+  int sumALL = 0;
+  for (int i = 1; i <= num; i++) {
+    if (i % 2 != 0) {
+      sumALL += i;
+    } else {
+    }
+  }
+  cout << "Sum of odds: " << sumALL << endl;
+}
 
 // main program
 
