@@ -15,6 +15,7 @@
 using namespace std;
 
 int main() {
+  int sum = 0;
   double gradeNum;
   int i = 1;
   double ileration = 1;
@@ -65,9 +66,12 @@ int main() {
     cout << "No grades were entered.";
 
   } else if (average == true) {
+    for (int i = 0; i < gradeBook.size(); i++) {
+      sum += gradeBook[i];
+    }
     cout << "Your avearge is: ";
-    cout << fixed << setprecision(2)
-         << accumulate(gradeBook.begin(), gradeBook.end(), 0) / ileration;
+    cout << fixed << setprecision(2);
+    cout << sum / ileration;
   }
   return 0;
 }
