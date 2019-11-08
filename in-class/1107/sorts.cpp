@@ -4,6 +4,9 @@ using namespace std;
 
 // sort functions
 void sortThree(int &x, int &y, int &z);
+void sortThree(double &x, double &y, double &z);
+void sortThree(string &x, string &y, string &z);
+void sortFour(int x, int y, int z, int a=0);
 
 // supporting swap functions
 void swap(int &x, int &y);
@@ -34,6 +37,42 @@ void sortThree(int &x, int &y, int &z) {
   }
   if (x > y) {
     swap(x, y);
+  }
+}
+void sortThree(double &x, double &y, double &z) {
+  if (x > y) {
+    swap(x, y);
+  }
+  if (y > z) {
+    swap(y, z);
+  }
+  if (x > y) {
+    swap(x, y);
+  }
+}
+void sortThree(string &x, string &y, string &z) {
+  if (x > y) {
+    swap(x, y);
+  }
+  if (y > z) {
+    swap(y, z);
+  }
+  if (x > y) {
+    swap(x, y);
+  }
+}
+void sortFour(int &x, int &y, int &z, int a=0) {
+  if (x > y) {
+    swap(x, y);
+  }
+  if (y > z) {
+    swap(y, z);
+  }
+  if (x > y) {
+    swap(x, y);
+  }
+  if (z > a){
+      swap(z, a);
   }
 }
 
