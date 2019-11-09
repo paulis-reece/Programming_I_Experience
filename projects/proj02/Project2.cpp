@@ -8,7 +8,7 @@ using namespace std;
 int Value(string roman) {
   int remainders = 0;
   int placeholder = 0;
-  int counter = true;
+  int counter = 0;
   int iliteration = 0;
   vector<int> numVec(roman.length());
   // Creates the string characters into Value elements
@@ -40,23 +40,21 @@ int Value(string roman) {
   //  Performing Subtraction Rule for the Roman Numeral values
   for (int j = 0; j < numVec.size() - 1; j++) {
     if (numVec.at(j) < numVec.at(j + 1)) {
-      counter = false;
+      counter++;
       placeholder = numVec.at(j + 1) - numVec.at(j) + placeholder;
     } else {
       remainders += numVec.at(j);
     }
-    iliteration += j;
   }
   if (numVec.size() == 1) {
     placeholder = placeholder + numVec.size();
     return placeholder;
-  } else if (counter == true) {
-    placeholder = placeholder + remainders;
+  } else if (counter == 0) {
+    placeholder = placeholder + remainders + numVec.back();
     return placeholder;
-  } else if (iliteration % 2 == 0) {
-    return placeholder;
-  } else if (iliteration % 2 == 1) {
-    placeholder = placeholder + abs((remainders - placeholder));
+  } else if (numVec.size() % 2 > 0) {
+    placeholder = placeholder + numVec.back();
+  } else if (numVec.size() % 2 == 0) {
     return placeholder;
   }
   return placeholder;
@@ -333,7 +331,6 @@ string intToRoman(int result) {
 
 int main() {
   // Value and intToRoman are functions located above
-
   string rom1;
   string rom2;
   int result;
@@ -347,6 +344,6 @@ int main() {
   cout << "The Second Values: ";
   cin >> rom2;
   result = Value(rom1) + Value(rom2);
-  cout << "Roman Numeral Result: " << result;
+  cout << "Roman Numeral Result: " << intToRoman(result);
   return 0;
 }
