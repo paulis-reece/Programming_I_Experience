@@ -8,10 +8,10 @@ using namespace std;
 int Value(string roman) {
   int remainders = 0;
   int placeholder = 0;
-  int finalAnswer = 0;
+  int counter = true;
   int iliteration = 0;
   vector<int> numVec(roman.length());
-// Creates the string characters into Value elements
+  // Creates the string characters into Value elements
   for (int i = 0; i < roman.length(); i++) {
     switch (roman.at(i)) {
     case 'I':
@@ -37,16 +37,20 @@ int Value(string roman) {
       break;
     }
   }
-//  Performing Subtraction Rule for the Roman Numeral values
+  //  Performing Subtraction Rule for the Roman Numeral values
   for (int j = 0; j < numVec.size() - 1; j++) {
     if (numVec.at(j) < numVec.at(j + 1)) {
+      counter = false;
       placeholder = numVec.at(j + 1) - numVec.at(j) + placeholder;
     } else {
       remainders += numVec.at(j);
     }
     iliteration += j;
   }
-  if (placeholder <= 0) {
+  if (numVec.size() == 1) {
+    placeholder = placeholder + numVec.size();
+    return placeholder;
+  } else if (counter == true) {
     placeholder = placeholder + remainders;
     return placeholder;
   } else if (iliteration % 2 == 0) {
@@ -55,6 +59,7 @@ int Value(string roman) {
     placeholder = placeholder + abs((remainders - placeholder));
     return placeholder;
   }
+  return placeholder;
 }
 
 // Make Integers to Roman
@@ -75,7 +80,7 @@ string intToRoman(int result) {
   int V;
   int I;
 
- // Change each Number to the according letter if result is over 1000
+  // Change each Number to the according letter if result is over 1000
   if (result >= 1000) {
     finalM = result / 1000;
     M = finalM;
@@ -96,7 +101,7 @@ string intToRoman(int result) {
     finalV = result % 1000 % 500 % 100 % 50 % 10 % 5;
     finalI = finalV / 1;
     I = finalI;
-// Change each Number to the according letter if result is over 500
+    // Change each Number to the according letter if result is over 500
   } else if (result >= 500) {
     D = result / 500;
     finalD = result % 500;
@@ -114,7 +119,7 @@ string intToRoman(int result) {
     finalV = result % 500 % 100 % 50 % 10 % 5;
     finalI = finalV / 1;
     I = finalI;
- // Change each Number to the according letter if result is over 100
+    // Change each Number to the according letter if result is over 100
   } else if (result >= 100) {
     finalC = result / 100;
     C = finalC;
@@ -130,7 +135,7 @@ string intToRoman(int result) {
     finalV = result % 100 % 50 % 10 % 5;
     finalI = finalV / 1;
     I = finalI;
- // Change each Number to the according letter if result is over 50
+    // Change each Number to the according letter if result is over 50
   } else if (result >= 50) {
     finalL = result / 50;
     L = finalL;
@@ -143,7 +148,7 @@ string intToRoman(int result) {
     finalV = result % 50 % 10 % 5;
     finalI = finalV / 1;
     I = finalI;
- // Change each Number to the according letter if result is over 10
+    // Change each Number to the according letter if result is over 10
   } else if (result >= 10) {
     finalX = result / 10;
     X = finalX;
@@ -160,12 +165,12 @@ string intToRoman(int result) {
     finalV = result % 5;
     finalI = finalV / 1;
     I = finalI;
- // Change each Number to the according letter if result is over 0
+    // Change each Number to the according letter if result is over 0
   } else if (result > 0) {
     finalI = result / 1;
     I = finalI;
   }
-// Using the values above to convert back to Roman Numeral if result over 1000
+  // Using the values above to convert back to Roman Numeral if result over 1000
   if (result >= 1000) {
     if (M > 0) {
       for (int i = 0; i < M; i++) {
@@ -202,7 +207,8 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
- // Using the values above to convert back to Roman Numeral if result over 500
+    // Using the values above to convert back to Roman Numeral if result over
+    // 500
   } else if (result >= 500) {
     if (D > 0) {
       for (int i = 0; i < D; i++) {
@@ -234,7 +240,8 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
- // Using the values above to convert back to Roman Numeral if result over 100
+    // Using the values above to convert back to Roman Numeral if result over
+    // 100
   } else if (result >= 100) {
     if (C > 0) {
       for (int i = 0; i < C; i++) {
@@ -261,7 +268,7 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
-// Using the values above to convert back to Roman Numeral if result over 50
+    // Using the values above to convert back to Roman Numeral if result over 50
   } else if (result >= 50) {
     if (L > 0) {
       for (int i = 0; i < L; i++) {
@@ -283,7 +290,7 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
-// Using the values above to convert back to Roman Numeral if result over 10
+    // Using the values above to convert back to Roman Numeral if result over 10
   } else if (result >= 10) {
     if (X > 0) {
       for (int i = 0; i < X; i++) {
@@ -300,7 +307,7 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
-// Using the values above to convert back to Roman Numeral if result over 5
+    // Using the values above to convert back to Roman Numeral if result over 5
   } else if (result >= 5) {
     if (V > 0) {
       for (int i = 0; i < V; i++) {
@@ -312,7 +319,7 @@ string intToRoman(int result) {
         ans += 'I';
       }
     }
- // Using the values above to convert back to Roman Numeral if result over 1
+    // Using the values above to convert back to Roman Numeral if result over 1
   } else if (result >= 1) {
     if (I > 0) {
       for (int i = 0; i < I; i++) {
@@ -325,7 +332,7 @@ string intToRoman(int result) {
 }
 
 int main() {
-// Values and intToRoman are functions located above
+  // Value and intToRoman are functions located above
 
   string rom1;
   string rom2;
@@ -337,10 +344,9 @@ int main() {
   cout << "Enter Two Roman Numeral Values" << endl;
   cout << "The First Values: ";
   cin >> rom1;
-  cout << "Error! Please enter again.";
   cout << "The Second Values: ";
   cin >> rom2;
   result = Value(rom1) + Value(rom2);
-  cout << "Roman Numeral Result: " << intToRoman(result);
+  cout << "Roman Numeral Result: " << result;
   return 0;
 }
