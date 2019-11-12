@@ -27,14 +27,14 @@ char menu();
  * Adds the given amount to the balance after subtracting a tithe
  * of 10% of the deposit amount (non-taxable)
  */
-void deposit(float amount);
+void deposit(float amount, float &balance);
 
 /*--------------------------------------------------------------------
  * Subtracts the given amount (plus possibly a 9.8% sales tax) from
  * balance if there is enough in the account.  If there is not enough
  * in the account, return false and display an error.
  */
-bool purchase(float amount, bool taxable);
+bool purchase(float amount, bool taxable, float &balance);
 
 /*--------------------------------------------------------------------
  * Adds the interest equal to the given rate times the account balance
@@ -63,7 +63,7 @@ int main() {
     // infinite loop (until X is pressed)
     while (true) {
         // display menu and get choice
-        choice = menu();
+        choice = menu(balance);
 
         // exit the loop
         if (choice == 'E')
@@ -71,17 +71,17 @@ int main() {
 
         // based on that choice...
         if (choice == 'D') {
-            deposit(getAmount(false));
+            deposit(getAmount(false), balance);
         } else if (choice == 'T') {
-            if (!purchase(getAmount(false), true))
+            if (!purchase(getAmount(false), true, balance))
                 cout << "You do not have enough money to make this purchase!"
                      << endl;
         } else if (choice == 'N') {
-            if (!purchase(getAmount(false), false))
+            if (!purchase(getAmount(false), false, balance))
                 cout << "You do not have enough money to make this purchase!"
                      << endl;
         } else if (choice == 'I') {
-            interest(getAmount(true));
+            interest(getAmount(true), balance);
         } else {
             cout << "Invalid Entry -- Please try again." << endl;
         }
@@ -100,7 +100,7 @@ int main() {
  * Function Definitions
  */
 
-char menu() {
+char menu(float balance) {
     // local copy of choice
     char choice;
 
@@ -122,11 +122,11 @@ char menu() {
     return choice;
 }
 
-void deposit(float amount) {
+void deposit(float amount, float &balance) {
     balance += 0.9 * amount;
 }
 
-bool purchase(float amount, bool taxable) {
+bool purchase(float amount, bool taxable, float &balance) {
     if (taxable)
         amount += TAX_RATE * amount;
     if (amount <= balance) {
@@ -137,7 +137,7 @@ bool purchase(float amount, bool taxable) {
     }
 }
 
-void interest(float rate) {
+void interest(float rate, float &balance) {
     balance += rate * balance / 100;
 }
 

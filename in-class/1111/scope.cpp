@@ -8,14 +8,14 @@
 
 #include <iostream> // for cin and cout
 using namespace std;
-
+ varOne = -1;
 int main() {
-  
+s
   int varOne;
-  varOne = -1;
 
   {
-  
+char varOne = 'A';
+
   }
 
 }
