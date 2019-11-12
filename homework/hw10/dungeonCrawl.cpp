@@ -209,26 +209,19 @@ int move(int room, char direction) {
 }
 
 void printMap(int player, int dragon) {
-  for (int i = 1; i <= 9; i++) {
+vector<char> random = {9, '.'};
+  for (int i = 0; i < random.size(); i++) {
     if (player == i) {
       cout << 'P';
     }
     if (dragon == i) {
       cout << 'D';
     }
-    if (player != i && dragon != i) {
-      cout << ".";
-    }
     if (i == 3) {
       cout << endl;
     }
-    if (i == 6) {
-      cout << endl;
-    }
-    if (i == 9) {
-      cout << endl;
-    }
   }
+  cout << endl;
 }
 
 char randomDirection() {
