@@ -86,13 +86,11 @@ int main() {
 
 char getValidDirection() {
   char directions;
-  char n, s, e, w;
+  char n, s, e, w, r;
   cout << "Whence will you flee? (n)orth, (s)outh, (e)ast, (w)est, or "
           "(r)andom: ";
   cin >> directions;
-  while (directions != 'n' || 's' || 'e' || 'w' || 'r') {
-  cin >> directions;
-  }
+  if(directions ==  )
   while (directions == 'n' || 's' || 'e' || 'w' || 'r') {
     if (directions == 'r') {
       directions = rand() % 4 + 1;
@@ -209,19 +207,21 @@ int move(int room, char direction) {
 }
 
 void printMap(int player, int dragon) {
-vector<char> random = {9, '.'};
-  for (int i = 0; i < random.size(); i++) {
-    if (player == i) {
+  vector<int> grid = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  for (int i = 0; i < grid.size(); i++) {
+    if (player == grid.at(i)) {
       cout << 'P';
     }
-    if (dragon == i) {
+    if (dragon == grid.at(i)) {
       cout << 'D';
     }
-    if (i == 3) {
+    if (player != grid.at(i) && dragon != grid.at(i)) {
+      cout << '.';
+    }
+    if (grid.at(i) % 3 == 0) {
       cout << endl;
     }
   }
-  cout << endl;
 }
 
 char randomDirection() {
