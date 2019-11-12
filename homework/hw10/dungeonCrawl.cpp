@@ -90,33 +90,40 @@ char getValidDirection() {
   cout << "Whence will you flee? (n)orth, (s)outh, (e)ast, (w)est, or "
           "(r)andom: ";
   cin >> directions;
-  if(directions ==  )
-  while (directions == 'n' || 's' || 'e' || 'w' || 'r') {
-    if (directions == 'r') {
-      directions = rand() % 4 + 1;
-      if (directions == 4) {
-        directions = 'n';
-      } else if (directions == 3) {
-        directions = 's';
-      } else if (directions == 2) {
-        directions = 'e';
-      } else if (directions == 1) {
-        directions = 'w';
-      }
-    } else {
-      if (directions == n) {
-        directions = 'n';
-      } else if (directions == s) {
-        directions = 's';
-      } else if (directions == e) {
-        directions = 'e';
-      } else if (directions == w) {
-        directions = 'w';
-      }
-    }
-    return directions;
+  if (directions != n || s || e || w || r) {
+    cout << "Invalid entry. Whence will you flee? (n)orth, (s)outh, (e)ast, "
+            "(w)est, or "
+            "(r)andom: ";
     cin >> directions;
+  } else {
+    while (directions == 'n' || 's' || 'e' || 'w' || 'r') {
+      if (directions == 'r') {
+        directions = rand() % 4 + 1;
+        if (directions == 4) {
+          directions = 'n';
+        } else if (directions == 3) {
+          directions = 's';
+        } else if (directions == 2) {
+          directions = 'e';
+        } else if (directions == 1) {
+          directions = 'w';
+        }
+      } else {
+        if (directions == n) {
+          directions = 'n';
+        } else if (directions == s) {
+          directions = 's';
+        } else if (directions == e) {
+          directions = 'e';
+        } else if (directions == w) {
+          directions = 'w';
+        }
+      }
+      return directions;
+      cin >> directions;
+    }
   }
+  return directions;
 }
 
 int move(int room, char direction) {
