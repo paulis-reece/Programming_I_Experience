@@ -47,7 +47,7 @@ int Value(string roman) {
     }
   }
   if (numVec.size() == 1) {
-    placeholder = placeholder + numVec.size();
+    placeholder = placeholder + numVec.back();
     return placeholder;
   } else if (counter == 0) {
     placeholder = placeholder + remainders + numVec.back();
@@ -168,182 +168,225 @@ string intToRoman(int result) {
     finalI = result / 1;
     I = finalI;
   }
-  // Using the values above to convert back to Roman Numeral if result over 1000
+  // Using the values above to convert back to Roman Numerals
+
   if (result >= 1000) {
-    if (M > 0) {
+    if (M >= 1) {
       for (int i = 0; i < M; i++) {
         ans += 'M';
       }
     }
-    if (D > 0) {
+    if (D >= 1) {
       for (int i = 0; i < D; i++) {
         ans += 'D';
       }
     }
-    if (C > 0) {
+    if (C == 4) {
+      ans += "CD";
+    } else if (C >= 1) {
       for (int i = 0; i < C; i++) {
         ans += 'C';
       }
     }
-    if (L > 0) {
+    if (L == 1 && X == 4) {
+      ans += "XC";
+    } else if (L >= 1) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
     }
-    if (X > 0) {
+    if (X == 4) {
+      ans += "XL";
+    } else if (X > 0) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
     }
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over
-    // 500
   } else if (result >= 500) {
-    if (D > 0) {
+    if (D >= 1) {
       for (int i = 0; i < D; i++) {
         ans += 'D';
       }
     }
-    if (C > 0) {
+    if (C == 4) {
+      ans += "CD";
+    } else if (C >= 1) {
       for (int i = 0; i < C; i++) {
         ans += 'C';
       }
     }
-    if (L > 0) {
+    if (L == 1 && X == 4) {
+      ans += "XC";
+    } else if (L >= 1) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
     }
-    if (X > 0) {
+    if (X == 4) {
+      ans += "XL";
+    } else if (X > 0) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
     }
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over
-    // 100
   } else if (result >= 100) {
-    if (C > 0) {
+    if (C == 4) {
+      ans += "CD";
+    } else if (C >= 1) {
       for (int i = 0; i < C; i++) {
         ans += 'C';
       }
     }
-    if (L > 0) {
+    if (L == 1 && X == 4) {
+      ans += "XC";
+    } else if (L >= 1) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
     }
-    if (X > 0) {
+    if (X == 4) {
+      ans += "XL";
+    } else if (X > 0) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
     }
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over 50
   } else if (result >= 50) {
-    if (L > 0) {
+    if (L == 1 && X == 4) {
+      ans += "XC";
+    } else if (L >= 1) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
     }
-    if (X > 0) {
+    if (X == 4) {
+      ans += "XL";
+    } else if (X > 0) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
     }
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over 10
   } else if (result >= 10) {
-    if (X > 0) {
+    if (X == 4) {
+      ans += "XL";
+    } else if (X > 0) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
     }
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over 5
   } else if (result >= 5) {
-    if (V > 0) {
+    if (V == 1 && I == 4) {
+      ans += "IX";
+    } else if (V > 0) {
       for (int i = 0; i < V; i++) {
         ans += 'V';
       }
     }
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
-    // Using the values above to convert back to Roman Numeral if result over 1
   } else if (result >= 1) {
-    if (I > 0) {
+    if (I == 4) {
+      ans += "IV";
+    } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
   }
+    return ans;
+  }
 
-  return ans;
-}
+  int main() {
+    // Value and intToRoman are functions located above
+    string rom1;
+    string rom2;
+    int result;
 
-int main() {
-  // Value and intToRoman are functions located above
-  string rom1;
-  string rom2;
-  int result;
+    cout << "Welcome to the Roman Numeral Calculator!" << endl;
+    cout << "----------------------------------------" << endl;
 
-  cout << "Welcome to the Roman Numeral Calculator!" << endl;
-  cout << "----------------------------------------" << endl;
-
-  cout << "Enter Two Roman Numeral Values" << endl;
-  cout << "The First Values: ";
-  cin >> rom1;
-  cout << "The Second Values: ";
-  cin >> rom2;
-  result = Value(rom1) + Value(rom2);
-  cout << "Roman Numeral Result: " << intToRoman(result);
-  return 0;
-}
+    cout << "Enter Two Roman Numeral Values" << endl;
+    cout << "The First Values: ";
+    cin >> rom1;
+    cout << "The Second Values: ";
+    cin >> rom2;
+    cout << endl;
+    result = Value(rom1) + Value(rom2);
+    cout << "Roman Numeral Result: " << intToRoman(result);
+    return 0;
+  }
