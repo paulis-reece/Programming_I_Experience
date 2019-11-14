@@ -48,7 +48,7 @@ int Value(string roman) {
     } else {
       remainders += numVec.at(j);
       excess += numVec.at(j + 1);
-      accumilate ++;
+      accumilate++;
     }
     accumilate += numVec.at(j);
     lastLookElem = numVec.at(j);
@@ -66,14 +66,14 @@ int Value(string roman) {
   } else if (numVec.back() < lastLookElem) {
     placeholder = placeholder + excess;
     return placeholder;
-  } else if (numVec.back() > lastLookElem && counter == 1)  {
-   placeholder = remainders + (numVec.back() - lastLookElem);
+  } else if (numVec.back() > lastLookElem && counter == 1) {
+    placeholder = remainders + (numVec.back() - lastLookElem);
   }
   return placeholder;
 }
 
 // Make Integers to Roman
-/*string intToRoman(int result) {
+string intToRoman(int result) {
   string ans;
   int finalM;
   int finalD;
@@ -353,7 +353,7 @@ int Value(string roman) {
         ans += 'V';
       }
     }
-    if (V==0 && I == 4) {
+    if (V == 0 && I == 4) {
       ans += "IV";
     } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
@@ -387,7 +387,7 @@ int Value(string roman) {
     }
   }
   return ans;
-}*/
+}
 
 int main() {
   // Value and intToRoman are functions located above
