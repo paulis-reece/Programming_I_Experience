@@ -1,7 +1,8 @@
 
 #include <iomanip>  // for format output
 #include <iostream> // for cout and cin
-#include <vector>   // for vectors
+#include <numeric>
+#include <vector> // for vectors
 using namespace std;
 
 // Change individual characters to values
@@ -9,7 +10,9 @@ int Value(string roman) {
   int remainders = 0;
   int placeholder = 0;
   int counter = 0;
-  int iliteration = 0;
+  int excess = 0;
+  int accumilate = 0;
+  int lastLookElem = 0;
   vector<int> numVec(roman.length());
   // Creates the string characters into Value elements
   for (int i = 0; i < roman.length(); i++) {
@@ -44,24 +47,33 @@ int Value(string roman) {
       placeholder = numVec.at(j + 1) - numVec.at(j) + placeholder;
     } else {
       remainders += numVec.at(j);
+      excess += numVec.at(j + 1);
+      accumilate ++;
     }
+    accumilate += numVec.at(j);
+    lastLookElem = numVec.at(j);
   }
+  // Performs correct operations to give correct value
   if (numVec.size() == 1) {
     placeholder = placeholder + numVec.back();
     return placeholder;
-  } else if (counter == 0) {
-    placeholder = placeholder + remainders + numVec.back();
+  } else if (counter == 0 && numVec.back() <= lastLookElem) {
+    placeholder = accumulate(numVec.begin(), numVec.end(), 0);
     return placeholder;
-  } else if (numVec.size() % 2 > 0) {
-    placeholder = placeholder + numVec.back();
-  } else if (numVec.size() % 2 == 0) {
+  } else if (numVec.back() == lastLookElem) {
+    placeholder = placeholder + excess;
     return placeholder;
+  } else if (numVec.back() < lastLookElem) {
+    placeholder = placeholder + excess;
+    return placeholder;
+  } else if (numVec.back() > lastLookElem && counter == 1)  {
+   placeholder = remainders + (numVec.back() - lastLookElem);
   }
   return placeholder;
 }
 
 // Make Integers to Roman
-string intToRoman(int result) {
+/*string intToRoman(int result) {
   string ans;
   int finalM;
   int finalD;
@@ -169,7 +181,7 @@ string intToRoman(int result) {
     I = finalI;
   }
   // Using the values above to convert back to Roman Numerals
-
+  // Convert Roman Numerals more than or equal 1000
   if (result >= 1000) {
     if (M >= 1) {
       for (int i = 0; i < M; i++) {
@@ -209,13 +221,14 @@ string intToRoman(int result) {
         ans += 'V';
       }
     }
-    if (I == 4) {
+    if (I == 4 && V != 1) {
       ans += "IV";
     } else if (I > 0) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal to 500
   } else if (result >= 500) {
     if (D >= 1) {
       for (int i = 0; i < D; i++) {
@@ -252,11 +265,12 @@ string intToRoman(int result) {
     }
     if (I == 4) {
       ans += "IV";
-    } else if (I > 0) {
+    } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal to 100
   } else if (result >= 100) {
     if (C == 4) {
       ans += "CD";
@@ -286,13 +300,14 @@ string intToRoman(int result) {
         ans += 'V';
       }
     }
-    if (I == 4) {
+    if (V == 0 && I == 4) {
       ans += "IV";
-    } else if (I > 0) {
+    } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal to 50
   } else if (result >= 50) {
     if (L == 1 && X == 4) {
       ans += "XC";
@@ -301,7 +316,7 @@ string intToRoman(int result) {
         ans += 'L';
       }
     }
-    if (X == 4) {
+    if (X == 4 && L == 0) {
       ans += "XL";
     } else if (X > 0) {
       for (int i = 0; i < X; i++) {
@@ -315,13 +330,14 @@ string intToRoman(int result) {
         ans += 'V';
       }
     }
-    if (I == 4) {
+    if (V == 0 && I == 4) {
       ans += "IV";
-    } else if (I > 0) {
+    } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal to 10
   } else if (result >= 10) {
     if (X == 4) {
       ans += "XL";
@@ -337,13 +353,14 @@ string intToRoman(int result) {
         ans += 'V';
       }
     }
-    if (I == 4) {
+    if (V==0 && I == 4) {
       ans += "IV";
-    } else if (I > 0) {
+    } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal to 5
   } else if (result >= 5) {
     if (V == 1 && I == 4) {
       ans += "IX";
@@ -352,13 +369,14 @@ string intToRoman(int result) {
         ans += 'V';
       }
     }
-    if (I == 4) {
+    if (V == 0 && I == 4) {
       ans += "IV";
-    } else if (I > 0) {
+    } else if (I > 0 && I != 4) {
       for (int i = 0; i < I; i++) {
         ans += 'I';
       }
     }
+    // Convert Roman Numeral more than or equal 1
   } else if (result >= 1) {
     if (I == 4) {
       ans += "IV";
@@ -368,25 +386,28 @@ string intToRoman(int result) {
       }
     }
   }
-    return ans;
-  }
+  return ans;
+}*/
 
-  int main() {
-    // Value and intToRoman are functions located above
-    string rom1;
-    string rom2;
-    int result;
+int main() {
+  // Value and intToRoman are functions located above
+  string rom1;
+  string rom2;
+  string check;
+  int result;
 
-    cout << "Welcome to the Roman Numeral Calculator!" << endl;
-    cout << "----------------------------------------" << endl;
+  cout << "Welcome to the Roman Numeral Calculator!" << endl;
+  cout << "----------------------------------------" << endl;
 
-    cout << "Enter Two Roman Numeral Values" << endl;
-    cout << "The First Values: ";
-    cin >> rom1;
-    cout << "The Second Values: ";
-    cin >> rom2;
-    cout << endl;
-    result = Value(rom1) + Value(rom2);
-    cout << "Roman Numeral Result: " << intToRoman(result);
-    return 0;
-  }
+  cout << "Enter Two Roman Numeral Values" << endl;
+  cout << "The First Values: ";
+  cin >> rom1;
+  // cout << "The Second Values: ";
+  // cin >> rom2;
+  check = rom1 + rom2;
+  cout << endl;
+  result = Value(rom1);
+  cout << "Roman Numeral Result: " << result;
+
+  return 0;
+}
