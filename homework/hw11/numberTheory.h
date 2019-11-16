@@ -3,7 +3,7 @@
  * hw11:  A library of simple functions
  *
  * File Name:  numberTheory.h
- * Name:       ?
+ * Name:       Reece Reklai
  * Course:     CPTR 141
  *
  */

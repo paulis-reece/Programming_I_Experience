@@ -3,7 +3,7 @@
  * hw12:  Functions for tracking quiz grades in CPTR 141
  *
  * File Name:  gradeBookFunctions.h
- * Name:       ?
+ * Name:       Reece Reklai
  * Course:     CPTR 141
  *
  */
@@ -18,21 +18,34 @@ using namespace std;
 /*=====================================================================
  * DECLARE AND INITALIZE GLOBALS HERE
  */
+ extern vector<char> quizScores;
+extern const int NUM_QUIZZES;
+
+extern const int MIN_PASS_FOR_A;
+extern const int MIN_E_FOR_A;
+extern const int MIN_PASS_FOR_B;
+extern const int MIN_E_FOR_B;
+extern const int MIN_PASS_FOR_C;
+extern const int MIN_PASS_FOR_D;
 
 
 /*=====================================================================
  * FUNCTION: getScore(string message)
- *   Prompts for a new quiz score using the string "message" and 
- *   validates it before storing it in the global "quizScores" vector.    
+ *   Prompts for a new quiz score using the string "message" and
+ *   validates it before storing it in the global "quizScores" vector.
  *   Also makes sure that we have no more than NUM_QUIZZES quiz scores.
  *    - Precondition: none
- *    - Postcondition: returns false if the score vector is full (already   
- *      at NUM_QUIZZES) or an invalid grade is entered, otherwise an E, 
+ *    - Postcondition: returns false if the score vector is full (already
+ *      at NUM_QUIZZES) or an invalid grade is entered, otherwise an E,
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
+for(int i = 0; i < NUM_QUIZZES; i++){
+quizScores.push_back(message.length());
 }
- 
+
+}
+
 
 /*=====================================================================
  * FUNCTION: calcGrade()
@@ -40,7 +53,7 @@ bool getScore(string message) {
  *   'F') from the global vector of homework scores as defined by the
  *   global constants: MIN_PASS_FOR_A, MIN_PASS_FOR_B, MIN_PASS_FOR_C,
  *   MIN_PASS_FOR_D, MIN_E_FOR_A, and MIN_E_FOR_B.
- *     - Precondition: the global "quizScores" vector must have at least 
+ *     - Precondition: the global "quizScores" vector must have at least
  *       one entry
  *     - Post condition: the correct grade letter is returned
  */
