@@ -68,6 +68,8 @@ int Value(string roman) {
     return placeholder;
   } else if (numVec.back() > lastLookElem && counter == 1) {
     placeholder = remainders + (numVec.back() - lastLookElem);
+  } else if (numVec.at(0)) {
+    placeholder = placeholder + 100;
   }
   return placeholder;
 }
@@ -272,23 +274,23 @@ string intToRoman(int result) {
     }
     // Convert Roman Numeral more than or equal to 100
   } else if (result >= 100) {
-    if (C == 4) {
+    if (result >= 400 && result <= 500) {
       ans += "CD";
-    } else if (C >= 1) {
+    } else if (C > 0) {
       for (int i = 0; i < C; i++) {
         ans += 'C';
       }
     }
     if (L == 1 && X == 4) {
       ans += "XC";
-    } else if (L >= 1) {
+    } else if (L > 0) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
     }
-    if (X == 4) {
+    if (L == 0 && X == 4) {
       ans += "XL";
-    } else if (X > 0) {
+    } else if (X > 0 && X <= 3) {
       for (int i = 0; i < X; i++) {
         ans += 'X';
       }
@@ -309,18 +311,16 @@ string intToRoman(int result) {
     }
     // Convert Roman Numeral more than or equal to 50
   } else if (result >= 50) {
-    if (L == 1 && X == 4) {
+    if (result >= 90 && result <= 99) {
       ans += "XC";
-    } else if (L >= 1) {
+    } else if (L > 0) {
       for (int i = 0; i < L; i++) {
         ans += 'L';
       }
-    }
-    if (X == 4 && L == 0) {
-      ans += "XL";
-    } else if (X > 0) {
-      for (int i = 0; i < X; i++) {
-        ans += 'X';
+      if (X > 0) {
+        for (int i = 0; i < X; i++) {
+          ans += 'X';
+        }
       }
     }
     if (V == 1 && I == 4) {
@@ -393,21 +393,33 @@ int main() {
   // Value and intToRoman are functions located above
   string rom1;
   string rom2;
-  string check;
   int result;
+  char Y;
+  char N;
+  bool outcome;
 
   cout << "Welcome to the Roman Numeral Calculator!" << endl;
   cout << "----------------------------------------" << endl;
-
-  cout << "Enter Two Roman Numeral Values" << endl;
-  cout << "The First Values: ";
-  cin >> rom1;
-  // cout << "The Second Values: ";
-  // cin >> rom2;
-  check = rom1 + rom2;
-  cout << endl;
-  result = Value(rom1);
-  cout << "Roman Numeral Result: " << result;
+  do {
+    cout << "Enter Two Roman Numeral Values" << endl;
+    cout << endl;
+    cout << "The First Values: ";
+    cin >> rom1;
+    cout << "The Second Values: ";
+    cin >> rom2;
+    cout << endl;
+    result = Value(rom1) + Value(rom2);
+    cout << "Roman Numeral Result: " << intToRoman(result);
+    cout << endl;
+    cout << "Do you want to try again? (Y)es or (No)" << endl;
+    cin >> outcome;
+    if (outcome == Y){
+        outcome = true;
+    } else if(outcome == N) {
+        outcome = false;
+    }
+    return outcome;
+  } while ( outcome == true );
 
   return 0;
 }
