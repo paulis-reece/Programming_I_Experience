@@ -15,11 +15,11 @@ using namespace std;
 
 bool divisible(int a, int b) {
   bool ans;
-  assert( a > 0 && b > 0);
+  assert(a > 0 && b > 0);
   if (a % b == 0) {
 
     return true;
-  } else if(a % b > 0) {
+  } else if (a % b > 0) {
     return false;
   }
 }
