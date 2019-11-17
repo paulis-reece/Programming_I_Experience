@@ -55,11 +55,3 @@ int gcd(int e, int f, int g) {
   }
   return GCD;
 }
-
-int main() {
-int test1, test2;
-cout << "Enter two positive integers to test" << endl;
-cin >> test1;
-cin >> test2;
-cout << "The result: " << divisible(test1, test2);
-}
