@@ -11,10 +11,13 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+using namespace std;
 
 bool divisible(int a, int b) {
-  assert(a > 0 && b > 0);
+  bool ans;
+  assert( a > 0 && b > 0);
   if (a % b == 0) {
+
     return true;
   } else if(a % b > 0) {
     return false;
@@ -54,5 +57,9 @@ int gcd(int e, int f, int g) {
 }
 
 int main() {
-  divisible(12, 2);
+int test1, test2;
+cout << "Enter two positive integers to test" << endl;
+cin >> test1;
+cin >> test2;
+cout << "The result: " << divisible(test1, test2);
 }
