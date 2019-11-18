@@ -68,7 +68,7 @@ char calcGrade() {
   int countR = 0;
   int countN = 0;
   int combineEM = 0;
-  int combineEMRN = 0;
+  int combineEMR = 0;
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(i) == 'E') {
       countE += 1;
@@ -84,19 +84,19 @@ char calcGrade() {
     }
   }
   combineEM = countE + countM;
-  combineEMRN = countE + countM + countR + countN;
-  if(combineEM == MIN_PASS_FOR_A ){
-      return 'A';
-  } else if(countE == MIN_E_FOR_A){
-      return 'A';
-  } else if(countE == MIN_E_FOR_B){
-      return 'B';
-  } else if(combineEMRN == MIN_PASS_FOR_C){
-      return 'C';
-  } else if(combineEMRN == MIN_PASS_FOR_D){
-      return 'D';
+  combineEMR = countE + countM + countR;
+  if (combineEM == MIN_PASS_FOR_A) {
+    return 'A';
+  } else if (countE == MIN_E_FOR_A) {
+    return 'A';
+  } else if (countE == MIN_E_FOR_B) {
+    return 'B';
+  } else if (combineEMR == MIN_PASS_FOR_C) {
+    return 'C';
+  } else if (combineEMR == MIN_PASS_FOR_D) {
+    return 'D';
   } else {
-      return 'F';
+    return 'F';
   }
 }
 
@@ -110,4 +110,5 @@ char calcGrade() {
  *       global "quizScores" will be updated and true returned, otherwise
  *       false is returned
  */
-bool changeScore(int index, char newScore) {}
+bool changeScore(int index, char newScore) {
+}
