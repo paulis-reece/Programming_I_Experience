@@ -8,17 +8,16 @@
  *
  */
 
-#include <vector>
-#include <string>
-#include <iostream>
 #include "gradeBookFunctions.h"
+#include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
-
 
 /*=====================================================================
  * DECLARE AND INITALIZE GLOBALS HERE
  */
- extern vector<char> quizScores;
+extern vector<char> quizScores;
 extern const int NUM_QUIZZES;
 
 extern const int MIN_PASS_FOR_A;
@@ -27,7 +26,6 @@ extern const int MIN_PASS_FOR_B;
 extern const int MIN_E_FOR_B;
 extern const int MIN_PASS_FOR_C;
 extern const int MIN_PASS_FOR_D;
-
 
 /*=====================================================================
  * FUNCTION: getScore(string message)
@@ -40,12 +38,19 @@ extern const int MIN_PASS_FOR_D;
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
-for(int i = 0; i < NUM_QUIZZES; i++){
-quizScores.push_back(message.length());
+  bool check;
+  do {
+    if (quizScores.size() != 8) {
+      quizScores.push_back(message.length());
+      check = true;
+    } else {
+      check = false;
+    }
+    cout << "Enter new quiz score: ";
+    cin >> message;
+  } while (quizScores.size() != 8);
+  return check;
 }
-
-}
-
 
 /*=====================================================================
  * FUNCTION: calcGrade()
@@ -58,8 +63,42 @@ quizScores.push_back(message.length());
  *     - Post condition: the correct grade letter is returned
  */
 char calcGrade() {
+  int countE = 0;
+  int countM = 0;
+  int countR = 0;
+  int countN = 0;
+  int combineEM = 0;
+  int combineEMRN = 0;
+  for (int i = 0; i < quizScores.size(); i++) {
+    if (quizScores.at(i) == 'E') {
+      countE += 1;
+    }
+    if (quizScores.at(i) == 'M') {
+      countM += 1;
+    }
+    if (quizScores.at(i) == 'R') {
+      countR += 1;
+    }
+    if (quizScores.at(i) == 'N') {
+      countN += 1;
+    }
+  }
+  combineEM = countE + countM;
+  combineEMRN = countE + countM + countR + countN;
+  if(combineEM == MIN_PASS_FOR_A ){
+      return 'A';
+  } else if(countE == MIN_E_FOR_A){
+      return 'A';
+  } else if(countE == MIN_E_FOR_B){
+      return 'B';
+  } else if(combineEMRN == MIN_PASS_FOR_C){
+      return 'C';
+  } else if(combineEMRN == MIN_PASS_FOR_D){
+      return 'D';
+  } else {
+      return 'F';
+  }
 }
-
 
 /*=====================================================================
  * FUNCTION: changeScore(int index, char newScore)
@@ -71,5 +110,4 @@ char calcGrade() {
  *       global "quizScores" will be updated and true returned, otherwise
  *       false is returned
  */
-bool changeScore(int index, char newScore) {
-}
+bool changeScore(int index, char newScore) {}
