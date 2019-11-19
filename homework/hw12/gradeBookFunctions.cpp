@@ -17,8 +17,8 @@ using namespace std;
 /*=====================================================================
  * DECLARE AND INITALIZE GLOBALS HERE
  */
-extern vector<char> quizScores;
 extern const int NUM_QUIZZES = 8;
+extern vector<char> quizScores(NUM_QUIZZES);
 
 extern const int MIN_PASS_FOR_A = 8;
 extern const int MIN_E_FOR_A = 4;
