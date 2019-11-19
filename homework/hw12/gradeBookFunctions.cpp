@@ -111,4 +111,17 @@ char calcGrade() {
  *       false is returned
  */
 bool changeScore(int index, char newScore) {
+  char swap;
+  bool SWAP;
+  for (int i = 0; i < quizScores.size(); i++) {
+    if (quizScores.at(index) > newScore) {
+      swap = quizScores.at(index);
+      quizScores.at(index) = newScore;
+      newScore = swap;
+      SWAP = true;
+    } else {
+      SWAP = false;
+    }
+  }
+  return SWAP;
 }
