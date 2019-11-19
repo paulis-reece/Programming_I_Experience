@@ -39,16 +39,15 @@ extern const int MIN_PASS_FOR_D = 4;
  */
 bool getScore(string message) {
   bool check;
-  char var;
   do {
-    cout << message;
-    cin >> var;
     if (quizScores.size() != 8) {
-      quizScores.push_back(var);
+      quizScores.push_back(message.length());
       check = true;
     } else {
       check = false;
     }
+    cout << "New quiz Score: ";
+    cin >> message;
   } while (quizScores.size() != 8);
   return check;
 }
@@ -92,9 +91,9 @@ char calcGrade() {
     return 'A';
   } else if (countE == MIN_E_FOR_B) {
     return 'B';
-  } else if (combineEMR == MIN_PASS_FOR_C) {
+  } else if (combineEM == MIN_PASS_FOR_C) {
     return 'C';
-  } else if (combineEMR == MIN_PASS_FOR_D) {
+  } else if (combineEM == MIN_PASS_FOR_D) {
     return 'D';
   } else {
     return 'F';
