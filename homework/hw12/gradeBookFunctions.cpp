@@ -18,14 +18,14 @@ using namespace std;
  * DECLARE AND INITALIZE GLOBALS HERE
  */
 extern vector<char> quizScores;
-extern const int NUM_QUIZZES;
+extern const int NUM_QUIZZES = 8;
 
-extern const int MIN_PASS_FOR_A;
-extern const int MIN_E_FOR_A;
-extern const int MIN_PASS_FOR_B;
-extern const int MIN_E_FOR_B;
-extern const int MIN_PASS_FOR_C;
-extern const int MIN_PASS_FOR_D;
+extern const int MIN_PASS_FOR_A = 8;
+extern const int MIN_E_FOR_A = 4;
+extern const int MIN_PASS_FOR_B = 7;
+extern const int MIN_E_FOR_B = 2;
+extern const int MIN_PASS_FOR_C = 5;
+extern const int MIN_PASS_FOR_D = 4;
 
 /*=====================================================================
  * FUNCTION: getScore(string message)
@@ -115,9 +115,7 @@ bool changeScore(int index, char newScore) {
   bool SWAP;
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(index) > newScore) {
-      swap = quizScores.at(index);
       quizScores.at(index) = newScore;
-      newScore = swap;
       SWAP = true;
     } else {
       SWAP = false;

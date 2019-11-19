@@ -3,7 +3,7 @@
  * hw12:  Functions for tracking quiz grades in CPTR 141
  *
  * File Name:  gradeBookFunctions.h
- * Name:       ?
+ * Name:       Reece Reklai
  * Course:     CPTR 141
  *
  */
