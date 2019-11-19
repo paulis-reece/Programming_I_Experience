@@ -22,7 +22,7 @@
  *       false otherwise
  */
 
-bool makeChange(int amount, int &value, int &number) {
+bool makeChange(int &amount, int value, int &number) {
   number = amount / value;
   if (number > 0) {
     amount = amount - (number * value);
