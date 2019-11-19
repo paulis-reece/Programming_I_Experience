@@ -31,3 +31,5 @@ bool makeChange(int amount, int &value, int &number) {
     return false;
   }
 }
+
+int main() { return 0; }
