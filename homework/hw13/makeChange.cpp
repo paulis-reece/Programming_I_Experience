@@ -3,7 +3,7 @@
  * hw13: Determine how many coins of a given value are in an amount.
  *
  * File Name: makeChange.cpp
- * Name:      ???
+ * Name:      Reece Reklai
  * Course:    CPTR 141
  *
  */
@@ -22,3 +22,12 @@
  *       false otherwise
  */
 
+bool makeChange(int amount, int &value, int &number) {
+  number = amount / value;
+  if (number > 0) {
+    amount = amount - (number * value);
+    return true;
+  } else {
+    return false;
+  }
+}
