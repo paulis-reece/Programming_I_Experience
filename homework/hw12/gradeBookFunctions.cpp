@@ -39,15 +39,16 @@ extern const int MIN_PASS_FOR_D = 4;
  */
 bool getScore(string message) {
   bool check;
+  char var;
   do {
+    cout << message;
+    cin >> var;
     if (quizScores.size() != 8) {
-      quizScores.push_back(message.length());
+      quizScores.push_back(var);
       check = true;
     } else {
       check = false;
     }
-    cout << "Enter new quiz score: ";
-    cin >> message;
   } while (quizScores.size() != 8);
   return check;
 }
