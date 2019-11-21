@@ -89,7 +89,7 @@ char calcGrade() {
     return 'A';
   } else if (countE == MIN_E_FOR_A) {
     return 'A';
-  } else if (countE == MIN_E_FOR_B) {
+  } else if (combineEM == MIN_E_FOR_B) {
     return 'B';
   } else if (combineEM == MIN_PASS_FOR_C) {
     return 'C';
