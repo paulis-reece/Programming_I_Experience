@@ -46,10 +46,15 @@ bool getScore(string message) {
     } else {
       check = false;
     }
-    cout << "New quiz Score: ";
+    cout << "Grade :";
     cin >> message;
   } while (quizScores.size() != 8);
-  return check;
+  if (check == false) {
+    quizScores.size();
+    return check;
+  } else {
+    return check;
+  }
 }
 
 /*=====================================================================
@@ -113,7 +118,7 @@ char calcGrade() {
 bool changeScore(int index, char newScore) {
   char swap;
   bool SWAP;
-  for (int i = 0; i < quizScores.size(); i++) {
+  for (int i = 0; i < NUM_QUIZZES; i++) {
     if (quizScores.at(index) > newScore) {
       quizScores.at(index) = newScore;
       SWAP = true;
