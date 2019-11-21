@@ -9,7 +9,7 @@ In this assignment you will write and test four functions dealing with arrays. T
 * The ``accumulate(int[],int)`` function, which sets the value of ``a[i]`` to be the sum of the values ``a[0]+a[1]+...+a[i]`` in an input array ``a[]``.
 * The ``reverse(int[],int)`` function, which reverses the order of the input array. 
 
-You will turn in only the file `arrayManipulate.cpp``, which contains your implementation of these four functions. You should also write (but not turn in) a ``main()`` driver program to test your functions.
+You will turn in only the file `arrayManipulate.cpp`, which contains your implementation of these four functions. You should also write (but not turn in) a ``main()`` driver program to test your functions.
 
 ## Solution Specification
 
