@@ -38,6 +38,7 @@ extern const int MIN_PASS_FOR_D = 4;
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
+  int i = 0;
   bool check;
   do {
     if (quizScores.size() != 8) {
@@ -46,13 +47,14 @@ bool getScore(string message) {
     } else {
       check = false;
     }
-    cout << "Grade :";
+    cout << " - grade" << " " << i + 1 << ":";
     cin >> message;
   } while (quizScores.size() != 8);
   if (check == false) {
     quizScores.size();
     return check;
   } else {
+    quizScores.size();
     return check;
   }
 }
