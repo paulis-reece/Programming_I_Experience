@@ -47,7 +47,8 @@ bool getScore(string message) {
     } else {
       check = false;
     }
-    cout << " - grade" << " " << i + 1 << ":";
+    cout << " - grade"
+         << " " << i + 1 << ":";
     cin >> message;
   } while (quizScores.size() != 8);
   if (check == false) {
