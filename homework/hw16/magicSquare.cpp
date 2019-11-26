@@ -8,4 +8,4 @@
  *
  */
 
-#include "loshu.h"
+#include "magicSquare.h"
