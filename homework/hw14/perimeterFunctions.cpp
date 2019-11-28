@@ -12,13 +12,13 @@
 #include <vector>
 const double PI = 3.141592653689;
 
-double findPerimeter(double length, int sides){
-double result;
-result = length * sides;
-return result;
+double findPerimeter(double length, int sides) {
+  double result;
+  result = length * sides;
+  return result;
 }
-double findPerimeter(double radius){
-double circumference;
-circumference = 2 * PI * radius;
-return circumference;
+double findPerimeter(double radius) {
+  double circumference;
+  circumference = 2 * PI * radius;
+  return circumference;
 }
