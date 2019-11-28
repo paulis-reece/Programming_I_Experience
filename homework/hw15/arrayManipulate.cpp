@@ -36,10 +36,11 @@ void accumulate(int array[], int arrayNum) {
   }
 }
 void reverse(int array[], int arrayNum) {
-  int counter = 0;
+  int swap = 0;
   assert(arrayNum > 0);
-  for (int i = arrayNum; 0 < i; i--) {
-    array[i] = array[counter];
-    counter++;
+  for (int i = 0; i < (arrayNum / 2); i++) {
+    swap = array[i];
+    array[i] = array[arrayNum - 1 - i];
+    array[arrayNum - 1 - i] = swap;
   }
 }
