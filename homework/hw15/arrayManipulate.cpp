@@ -37,7 +37,7 @@ void accumulate(int array[], int arrayNum) {
 }
 void reverse(int array[], int arrayNum) {
   assert(arrayNum > 0);
-  for (int i = arrayNum; i > 0; i--) {
+  for (int i = 0; i < arrayNum; ++i) {
     array[i] = array[arrayNum - 1 - i];
   }
 }
