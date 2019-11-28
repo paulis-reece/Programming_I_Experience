@@ -15,13 +15,13 @@
 void square(int array[], int arrayNum) {
   assert(arrayNum > 0);
   for (int i = 0; i < arrayNum; i++) {
-    array[i] = sqrt(array[i]);
+    array[i] = pow(array[i], 2);
   }
 }
 
 void divdeBy(int array[], int arrayNum1, int arrayNum2) {
   assert(arrayNum1 > 0 && arrayNum2 > 0);
-  for (int i = 0; i < arrayNum1 && i < arrayNum2; i++) {
+  for (int i = 0; i < arrayNum1; i++) {
     array[i] = (array[i] / arrayNum2);
   }
 }
@@ -29,7 +29,7 @@ void accumulate(int array[], int arrayNum) {
   assert(arrayNum > 0);
   for (int i = 0; i < arrayNum; i++) {
     if (array[i] == array[0]) {
-      array[i] += array[i];
+      array[i] = array[i];
     } else {
       array[i] = array[i] + array[i - 1];
     }
@@ -37,9 +37,7 @@ void accumulate(int array[], int arrayNum) {
 }
 void reverse(int array[], int arrayNum) {
   assert(arrayNum > 0);
-  int counter = 0;
   for (int i = arrayNum; i > 0; i--) {
-    array[i] = array[counter];
-    counter++;
+    array[i] = array[arrayNum - 1 - i];
   }
 }
