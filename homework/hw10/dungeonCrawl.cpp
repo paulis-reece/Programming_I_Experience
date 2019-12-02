@@ -102,20 +102,13 @@ char getValidDirection() {
     directions = rand() % 4 + 1;
     if (directions == 4) {
       directions = 'n';
-      return directions;
     } else if (directions == 3) {
       directions = 's';
-      return directions;
     } else if (directions == 2) {
       directions = 'e';
-      return directions;
     } else if (directions == 1) {
       directions = 'w';
-      return directions;
-    } else {
-      return directions;
     }
-    return directions;
   }
   return directions;
 }
