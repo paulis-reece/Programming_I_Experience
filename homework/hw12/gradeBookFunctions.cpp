@@ -18,7 +18,7 @@ using namespace std;
  * DECLARE AND INITALIZE GLOBALS HERE
  */
 extern const int NUM_QUIZZES = 8;
-extern vector<char> quizScores(NUM_QUIZZES);
+extern vector<char> quizScores;
 
 extern const int MIN_PASS_FOR_A = 8;
 extern const int MIN_E_FOR_A = 4;
@@ -38,26 +38,23 @@ extern const int MIN_PASS_FOR_D = 4;
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
-  int i = 0;
+  int i = 1;
   bool check;
+  char storage;
   do {
+    cout << " grade" << i << ":";
+    cin >> message;
     if (quizScores.size() != 8) {
-      quizScores.push_back(message.length());
-      check = true;
+      for (int i = 0; i < message.length(); i++) {
+        quizScores = {message.at(i)};
+        check = true;
+      }
     } else {
       check = false;
     }
-    cout << " - grade"
-         << " " << i + 1 << ":";
-    cin >> message;
+    i++;
   } while (quizScores.size() != 8);
-  if (check == false) {
-    quizScores.size();
-    return check;
-  } else {
-    quizScores.size();
-    return check;
-  }
+  return check;
 }
 
 /*=====================================================================
@@ -93,9 +90,14 @@ char calcGrade() {
   }
   combineEM = countE + countM;
   combineEMR = countE + countM + countR;
-  if (combineEM == MIN_PASS_FOR_A) {
+  if (countE == MIN_PASS_FOR_A) {
     return 'A';
-  } else if (countE == MIN_E_FOR_A) {
+  } else if (combineEM == MIN_E_FOR_A) {
+    if (combineEMR == MIN_E_FOR_A) {
+      return 'B';
+    } else {
+      return 'A';
+    }
     return 'A';
   } else if (combineEM == MIN_E_FOR_B) {
     return 'B';
@@ -119,14 +121,15 @@ char calcGrade() {
  *       false is returned
  */
 bool changeScore(int index, char newScore) {
-  char swap;
+  int counter = 0;
   bool SWAP;
-  for (int i = 0; i < NUM_QUIZZES; i++) {
+  for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(index) > newScore) {
       quizScores.at(index) = newScore;
-      SWAP = true;
+      SWAP = 1;
+      counter++;
     } else {
-      SWAP = false;
+      SWAP = 0;
     }
   }
   return SWAP;
