@@ -4,17 +4,28 @@
 using namespace std;
 
 int main() {
-  ostringstream letterList;
-  char letter;
-  int count = 0;
-  cout << "Enter one letter at a time, '!' to quit" << endl;
+  ostringstream zeroRemainder;
+  ostringstream oneRemainder;
+  ostringstream twoRemainder;
+  int variable;
+  cout << "Enter a list of integers to classify. A negative number quits."
+       << endl;
   do {
-    cout << "Letter " << ++count << ": ";
-    cin >> letter;
-    if (letter == '!')
+    cin >> variable;
+     if (variable < 0){
       break;
-    letterList << letter << " ";
+     } else if ( variable % 3 == 0){
+zeroRemainder << number << " ";
+     }else if ( variable % 3 == 0){
+oneRemainder << number << " ";
+     }else if ( variable % 3 == 0){
+twoRemainder << number << " ";
+     }
+
   } while (true);
-  string theList = letterList.str();
-  cout << "Your list is: " << theList << endl;
+  do {
+    cout << "Number w/ Remainders " << ++count << ": ";
+    cout << variable % 3;
+   
+  } while (variable % 3 > 0);
 }

@@ -394,32 +394,42 @@ int main() {
   string rom1;
   string rom2;
   int result;
-  char Y;
-  char N;
-  bool outcome;
+  char outcome;
 
   cout << "Welcome to the Roman Numeral Calculator!" << endl;
   cout << "----------------------------------------" << endl;
   do {
-    cout << "Enter Two Roman Numeral Values" << endl;
-    cout << endl;
-    cout << "The First Values: ";
-    cin >> rom1;
-    cout << "The Second Values: ";
-    cin >> rom2;
+      cout << "Enter Two Roman Numeral Values" << endl;
+      cout << endl;
+      cout << "The First Values: ";
+      cin >> rom1;
+      cout << "The Second Values: ";
+      cin >> rom2;
     cout << endl;
     result = Value(rom1) + Value(rom2);
     cout << "Roman Numeral Result: " << intToRoman(result);
     cout << endl;
-    cout << "Do you want to try again? (Y)es or (No)" << endl;
+    cout << endl;
+    // If the user wants the program to run again
+    cout << "Do you want to try again? (Y)es or (N)o" << endl;
     cin >> outcome;
-    if (outcome == Y){
-        outcome = true;
-    } else if(outcome == N) {
-        outcome = false;
+    if (outcome == 'Y') {
+      return outcome = true;
+    } else if (outcome == 'N') {
+      return outcome = false;
+    } else if (outcome != 'Y' || outcome != 'N') {
+      while (outcome != 'Y' || outcome != 'N') {
+        cout << "Please select Y for Yes or N for No ";
+        cin >> outcome;
+        continue;
+      }
+      if (outcome == 'Y') {
+        return outcome = true;
+      } else if (outcome == 'N') {
+        return outcome = false;
+      }
     }
-    return outcome;
-  } while ( outcome == true );
+  } while (outcome != true);
 
   return 0;
 }

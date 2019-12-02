@@ -15,7 +15,6 @@ using namespace std;
 int main() {
 
   string word;
-  int counter;
   bool containsDoubles;
 
   cout << "Welcome to the DoubleChecker(TM) word checker" << endl;
