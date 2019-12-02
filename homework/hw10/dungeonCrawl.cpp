@@ -115,6 +115,7 @@ char getValidDirection() {
     } else {
       return directions;
     }
+    return directions;
   }
   return directions;
 }
