@@ -395,22 +395,34 @@ int main() {
   string rom2;
   string combineRom;
   int result;
+  int counter = 0;
   char outcome;
   bool verdict;
   // Start of the Roman Numeral Calculator
   do {
+    counter = 0;
     verdict = true;
     // Validate if it is a correct Roman Numeral
     while (verdict == true) {
+      counter++;
       cout << endl;
-      cout << "Welcome to the Roman Numeral Calculator!" << endl;
-      cout << "----------------------------------------" << endl;
-      cout << "Enter Two Roman Numeral Values" << endl;
-      cout << endl;
-      cout << "The First Values: ";
-      cin >> rom1;
-      cout << "The Second Values: ";
-      cin >> rom2;
+      if (counter > 1) {
+        cout << "Please Enter Valid Roman Numeral Values" << endl;
+        cout << endl;
+        cout << "The First Values: ";
+        cin >> rom1;
+        cout << "The Second Values: ";
+        cin >> rom2;
+      } else {
+        cout << "Welcome to the Roman Numeral Calculator!" << endl;
+        cout << "----------------------------------------" << endl;
+        cout << "Enter Two Roman Numeral Values" << endl;
+        cout << endl;
+        cout << "The First Values: ";
+        cin >> rom1;
+        cout << "The Second Values: ";
+        cin >> rom2;
+      }
       combineRom = rom1 + rom2;
       for (int k = 0; k < combineRom.length(); k++) {
         if (combineRom.at(k) != 'I' && combineRom.at(k) != 'V' &&
