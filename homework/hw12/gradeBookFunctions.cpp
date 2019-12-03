@@ -68,7 +68,6 @@ char calcGrade() {
   int countN = 0;
   int combineEM = 0;
   int combineEMR = 0;
-  char grade;
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(i) == 'E') {
       countE += 1;
@@ -86,19 +85,18 @@ char calcGrade() {
   combineEM = countE + countM;
   combineEMR = countE + countM + countR;
   if (countE == MIN_PASS_FOR_A) {
-    grade = 'A';
+    return 'A';
   } else if (combineEM == MIN_E_FOR_A) {
-    grade = 'A';
+    return 'A';
   } else if (combineEM == MIN_E_FOR_B) {
-    grade = 'B';
+    return 'B';
   } else if (combineEM == MIN_PASS_FOR_C) {
-    grade = 'C';
+    return 'C';
   } else if (combineEM == MIN_PASS_FOR_D) {
-    grade = 'D';
+    return 'D';
   } else {
-    grade = 'F';
+    return 'F';
   }
-  return grade;
 }
 
 /*=====================================================================
