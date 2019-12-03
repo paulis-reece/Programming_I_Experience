@@ -44,12 +44,11 @@ bool getScore(string message) {
   do {
     cout << "grade " << i << ":";
     for (int j = 0; j < message.length(); j++) {
-      if (message.at(i) != 'E' && 'M' && 'R' && 'N') {
+      if (message.at(j) != 'E' && 'M' && 'R' && 'N') {
         check = false;
         break;
       } else {
-        storage += message.at(j);
-        quizScores = {storage};
+        quizScores.push_back(message.at(j));
       }
     }
     cin >> message;
@@ -79,6 +78,7 @@ char calcGrade() {
   int countN = 0;
   int combineEM = 0;
   int combineEMR = 0;
+  char grade;
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(i) == 'E') {
       countE += 1;
@@ -96,20 +96,23 @@ char calcGrade() {
   combineEM = countE + countM;
   combineEMR = countE + countM + countR;
   if (countE == MIN_PASS_FOR_A) {
-    return 'A';
-  } else if (combineEMR == MIN_E_FOR_A) {
-    return 'B';
+    grade = 'A';
   } else if (combineEM == MIN_E_FOR_A) {
-    return 'A';
+    if (combineEMR == MIN_E_FOR_A) {
+      grade = 'B';
+    } else {
+      grade = 'A';
+    }
   } else if (combineEMR == MIN_E_FOR_B) {
-    return 'B';
+    grade = 'B';
   } else if (combineEM == MIN_PASS_FOR_C) {
-    return 'C';
+    grade = 'C';
   } else if (combineEM == MIN_PASS_FOR_D) {
-    return 'D';
+    grade = 'D';
   } else {
-    return 'F';
+    grade = 'F';
   }
+  return grade;
 }
 
 /*=====================================================================
@@ -127,9 +130,9 @@ bool changeScore(int index, char newScore) {
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(index) > newScore) {
       quizScores.at(index) = newScore;
-      SWAP = 1;
+      SWAP = true;
+      break;
     } else {
-      SWAP = 0;
     }
   }
   return SWAP;
