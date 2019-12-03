@@ -115,7 +115,7 @@ char calcGrade() {
  *       false is returned
  */
 bool changeScore(int index, char newScore) {
-  if (quizScores.at(index) > newScore) {
+  if (quizScores.at(index - 1) > newScore) {
     quizScores.at(index) = newScore;
     return true;
   } else {
