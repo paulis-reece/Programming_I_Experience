@@ -390,21 +390,45 @@ string intToRoman(int result) {
 }
 
 int main() {
-  // Value and intToRoman are functions located above
+  // Functions located above
   string rom1;
   string rom2;
+  string combineRom;
   int result;
   char outcome;
-
-  cout << "Welcome to the Roman Numeral Calculator!" << endl;
-  cout << "----------------------------------------" << endl;
+  bool verdict;
+  // Start of the Roman Numeral Calculator
   do {
+    verdict = true;
+    // Validate if it is a correct Roman Numeral
+    while (verdict == true) {
+      cout << endl;
+      cout << "Welcome to the Roman Numeral Calculator!" << endl;
+      cout << "----------------------------------------" << endl;
       cout << "Enter Two Roman Numeral Values" << endl;
       cout << endl;
       cout << "The First Values: ";
       cin >> rom1;
       cout << "The Second Values: ";
       cin >> rom2;
+      combineRom = rom1 + rom2;
+      for (int k = 0; k < combineRom.length(); k++) {
+        if (combineRom.at(k) != 'I' && combineRom.at(k) != 'V' &&
+            combineRom.at(k) != 'X' && combineRom.at(k) != 'L' &&
+            combineRom.at(k) != 'C' && combineRom.at(k) != 'D') {
+          verdict = true;
+          break;
+        } else {
+          verdict = false;
+        }
+      }
+      if (verdict == true) {
+        continue;
+      } else {
+        verdict = false;
+      }
+    }
+    // Start the process of going into functions
     cout << endl;
     result = Value(rom1) + Value(rom2);
     cout << "Roman Numeral Result: " << intToRoman(result);
@@ -414,22 +438,14 @@ int main() {
     cout << "Do you want to try again? (Y)es or (N)o" << endl;
     cin >> outcome;
     if (outcome == 'Y') {
-      return outcome = true;
     } else if (outcome == 'N') {
-      return outcome = false;
     } else if (outcome != 'Y' || outcome != 'N') {
-      while (outcome != 'Y' || outcome != 'N') {
+      while (outcome != 'Y' && outcome != 'N') {
         cout << "Please select Y for Yes or N for No ";
         cin >> outcome;
-        continue;
-      }
-      if (outcome == 'Y') {
-        return outcome = true;
-      } else if (outcome == 'N') {
-        return outcome = false;
       }
     }
-  } while (outcome != true);
+  } while (outcome == 'Y');
 
   return 0;
 }
