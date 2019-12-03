@@ -18,7 +18,7 @@ using namespace std;
  * DECLARE AND INITALIZE GLOBALS HERE
  */
 extern const int NUM_QUIZZES = 8;
-extern vector<char> quizScores = {NUM_QUIZZES};
+extern vector<char> quizScores;
 
 extern const int MIN_PASS_FOR_A = 8;
 extern const int MIN_E_FOR_A = 4;
@@ -38,23 +38,28 @@ extern const int MIN_PASS_FOR_D = 4;
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
-  int i = 1;
-  bool check;
   char storage;
+  bool check;
+  int i = 1;
   do {
-    cout << " grade" << i << ":";
-    cin >> message;
-    if (quizScores.size() != 8) {
-      for (int i = 0; i < message.length(); i++) {
-        quizScores = {message.at(i)};
-        check = true;
+    cout << "grade " << i << ":";
+    for (int j = 0; j < message.length(); j++) {
+      if (message.at(i) != 'E' && 'M' && 'R' && 'N') {
+        check = false;
+        break;
+      } else {
+        storage += message.at(j);
+        quizScores = {storage};
       }
-    } else {
-      check = false;
     }
+    cin >> message;
     i++;
-  } while (quizScores.size() != 8);
-  return check;
+  } while (quizScores.size() < NUM_QUIZZES);
+  if (check == false) {
+    return check;
+  } else {
+    return check = true;
+  }
 }
 
 /*=====================================================================
@@ -92,14 +97,11 @@ char calcGrade() {
   combineEMR = countE + countM + countR;
   if (countE == MIN_PASS_FOR_A) {
     return 'A';
+  } else if (combineEMR == MIN_E_FOR_A) {
+    return 'B';
   } else if (combineEM == MIN_E_FOR_A) {
-    if (combineEMR == MIN_E_FOR_A) {
-      return 'B';
-    } else {
-      return 'A';
-    }
     return 'A';
-  } else if (combineEM == MIN_E_FOR_B) {
+  } else if (combineEMR == MIN_E_FOR_B) {
     return 'B';
   } else if (combineEM == MIN_PASS_FOR_C) {
     return 'C';
@@ -121,13 +123,11 @@ char calcGrade() {
  *       false is returned
  */
 bool changeScore(int index, char newScore) {
-  int counter = 0;
   bool SWAP;
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(index) > newScore) {
       quizScores.at(index) = newScore;
       SWAP = 1;
-      counter++;
     } else {
       SWAP = 0;
     }
