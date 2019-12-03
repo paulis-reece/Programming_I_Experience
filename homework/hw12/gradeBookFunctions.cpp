@@ -71,14 +71,11 @@ char calcGrade() {
   for (int i = 0; i < quizScores.size(); i++) {
     if (quizScores.at(i) == 'E') {
       countE += 1;
-    }
-    if (quizScores.at(i) == 'M') {
+    } else if (quizScores.at(i) == 'M') {
       countM += 1;
-    }
-    if (quizScores.at(i) == 'R') {
+    } else if (quizScores.at(i) == 'R') {
       countR += 1;
-    }
-    if (quizScores.at(i) == 'N') {
+    } else if (quizScores.at(i) == 'N') {
       countN += 1;
     }
   }
