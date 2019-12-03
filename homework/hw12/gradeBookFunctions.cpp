@@ -17,15 +17,15 @@ using namespace std;
 /*=====================================================================
  * DECLARE AND INITALIZE GLOBALS HERE
  */
-extern const int NUM_QUIZZES = 8;
-extern vector<char> quizScores = {};
+const int NUM_QUIZZES = 8;
+vector<char> quizScores;
 
-extern const int MIN_PASS_FOR_A = 8;
-extern const int MIN_E_FOR_A = 4;
-extern const int MIN_PASS_FOR_B = 7;
-extern const int MIN_E_FOR_B = 2;
-extern const int MIN_PASS_FOR_C = 5;
-extern const int MIN_PASS_FOR_D = 4;
+const int MIN_PASS_FOR_A = 8;
+const int MIN_E_FOR_A = 4;
+const int MIN_PASS_FOR_B = 7;
+const int MIN_E_FOR_B = 2;
+const int MIN_PASS_FOR_C = 5;
+const int MIN_PASS_FOR_D = 4;
 
 /*=====================================================================
  * FUNCTION: getScore(string message)
@@ -38,28 +38,19 @@ extern const int MIN_PASS_FOR_D = 4;
  *      M, R, or N is pushed onto "quizScores" and true is returned
  */
 bool getScore(string message) {
-  char storage;
-  bool check;
-  int i = 0;
-  do {
-    cout << " - grade " << i++ << ": ";
-    for (int j = 0; j < message.length(); j++) {
-      if (message.at(j) != 'E' && 'M' && 'R' && 'N') {
-        check = false;
-        break;
-      } else {
-        quizScores.push_back(message.at(j));
-      }
+  char entry;
+  if (quizScores.size() < NUM_QUIZZES) {
+    cout << message;
+    cin >> entry;
+    if (entry == 'E' || entry == 'M' || entry == 'R' || entry == 'N') {
+      quizScores.push_back(entry);
+      return true;
+    } else {
+      return false;
     }
-    cin >> message;
-  } while (quizScores.size() < NUM_QUIZZES);
-  if (check == false) {
-    return check;
-  } else {
-    return check = true;
   }
+  return false;
 }
-
 /*=====================================================================
  * FUNCTION: calcGrade()
  *   Calculates and returns the letter grade ('A', 'B', 'C', 'D', or
