@@ -402,7 +402,7 @@ int main() {
   do {
     counter = 0;
     verdict = true;
-    // Validate if it is a correct Roman Numeral
+    // Welcoming the user to the Calculator
     while (verdict == true) {
       counter++;
       cout << endl;
@@ -423,6 +423,7 @@ int main() {
         cout << "The Second Values: ";
         cin >> rom2;
       }
+      // Validate if it is a correct Roman Numeral
       combineRom = rom1 + rom2;
       for (int k = 0; k < combineRom.length(); k++) {
         if (combineRom.at(k) != 'I' && combineRom.at(k) != 'V' &&

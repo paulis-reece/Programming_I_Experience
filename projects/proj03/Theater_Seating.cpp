@@ -2,7 +2,7 @@
 
 Name: Reece Reklai
 
-Date:
+Date: 12/6/19
 
 Project 3
 
@@ -38,9 +38,9 @@ int main() {
   cout << "Welcome to the reservation seat program" << endl;
   cout << "---------------------------------------" << endl;
   cout << endl;
-  cout << "All seats are currently free in the theater, there are ten rows and thirty columns on each row." << endl;
-  cout << "The prices for each seat is up to your discretion." << endl;
-  cout << "What is the price: $";
+  cout << "All seats are currently free in the theater shown above, there are ten rows and thirty columns on each row." << endl;
+  cout << "The prices for each row of seats is up to your discretion." << endl;
+  cout << "What are the price: $";
   cin >> price;
   if(price < 0){
 while(price < 0){
