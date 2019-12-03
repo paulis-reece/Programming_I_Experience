@@ -82,9 +82,17 @@ char calcGrade() {
   combineEM = countE + countM;
   combineEMR = countE + countM + countR;
   if (combineEM == MIN_PASS_FOR_A) {
-    return 'A';
+    if (countR > 0) {
+      return 'B';
+    } else {
+      return 'A';
+    }
   } else if (countE == MIN_E_FOR_A) {
-    return 'A';
+    if (countR > 0) {
+      return 'B';
+    } else {
+      return 'A';
+    }
   } else if (countE == MIN_E_FOR_B) {
     return 'B';
   } else if (combineEM == MIN_PASS_FOR_C) {
