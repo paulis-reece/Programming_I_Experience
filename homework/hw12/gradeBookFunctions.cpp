@@ -40,9 +40,9 @@ extern const int MIN_PASS_FOR_D = 4;
 bool getScore(string message) {
   char storage;
   bool check;
-  int i = 1;
+  int i = 0;
   do {
-    cout << "grade " << i << ":";
+    cout << " - grade " << i++ << ": ";
     for (int j = 0; j < message.length(); j++) {
       if (message.at(j) != 'E' && 'M' && 'R' && 'N') {
         check = false;
@@ -52,7 +52,6 @@ bool getScore(string message) {
       }
     }
     cin >> message;
-    i++;
   } while (quizScores.size() < NUM_QUIZZES);
   if (check == false) {
     return check;
