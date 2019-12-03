@@ -1,11 +1,11 @@
 # CPTR 141: Project #2
 ## Student: Reece Reklai
 ## *Graded: November 20, 2019*
+## *Regraded: December 2, 2019*
 ------
 ## Notes
-* Repeating program does not work.
-* Subtraction rule doesn't always work for unorthodox cases (IIIX).
-* Insufficient input validation.
+* Subtraction rule doesn't always work for unorthodox cases (IIIIV). It's 'k.
+* Roman numeral inputs not validated.
 
 ## Solution Checklist
 
@@ -16,7 +16,7 @@
     * Correct format: ✔
     * Subtraction rule: /
 
-* User interaction handled gracefully: ❌
+* User interaction handled gracefully: ✔
 
 Required Concepts:
 * Appropriately named variables: ✔
@@ -25,4 +25,4 @@ Required Concepts:
 * Looping statements (while, do-while, and/or for): ✔
 * Well-formatted code including appropriate comments: ✔
 ---
-## TA GRADE: M
+## TA GRADE: E
