@@ -98,7 +98,7 @@ char calcGrade() {
   if (countE == MIN_PASS_FOR_A) {
     grade = 'A';
   } else if (combineEM == MIN_E_FOR_A) {
-    if (combineEMR == MIN_E_FOR_A) {
+    if (countR > 0) {
       grade = 'B';
     } else {
       grade = 'A';
