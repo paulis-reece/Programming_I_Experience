@@ -81,15 +81,15 @@ char calcGrade() {
   }
   combineEM = countE + countM;
   combineEMR = countE + countM + countR;
-  if (countE == MIN_PASS_FOR_A) {
+  if (combineEM == MIN_PASS_FOR_A) {
     return 'A';
-  } else if (combineEM == MIN_E_FOR_A) {
+  } else if (countE == MIN_E_FOR_A) {
     return 'A';
-  } else if (combineEM == MIN_E_FOR_B) {
+  } else if (countE == MIN_E_FOR_B) {
     return 'B';
-  } else if (combineEM == MIN_PASS_FOR_C) {
+  } else if (combineEMR == MIN_PASS_FOR_C) {
     return 'C';
-  } else if (combineEM == MIN_PASS_FOR_D) {
+  } else if (combineEMR == MIN_PASS_FOR_D) {
     return 'D';
   } else {
     return 'F';
