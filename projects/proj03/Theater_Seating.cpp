@@ -33,9 +33,9 @@ void printInitializedSeats(char array[row][column], vector<int> money,
                            int &Revenue, bool &successOrFail) {
   cout << "Front Row Seats" << endl;
   cout << endl;
- 
+
   for (int r = 1; r <= row; r++) {
-    
+
     for (int c = 1; c <= column; c++) {
       if (array[r][c] == '*') {
         cout << '*';
@@ -90,12 +90,16 @@ int main() {
   vector<int> mulipleRows(0);
   vector<int> mulipleCols(0);
   vector<int> priceRows(0);
+  cout << "Welcome to the reservation seat program" << endl;
+  cout << "---------------------------------------" << endl;
+    cout << "(A) Display a seating chart" << endl;
+    cout << "(B) Sell one or more tickets" << endl;
+    cout << "(C) Display statistics such as the number of tickets sold, the number of seats still available, the total revenue from ticket sales" << endl;
+    cout << "(D) Reset the program and re-enter the theater seating and pricing information" << endl;
+
   cout << "Front Row Seats" << endl;
   cout << endl;
   printSeats(printSeat);
-  cout << endl;
-  cout << "Welcome to the reservation seat program" << endl;
-  cout << "---------------------------------------" << endl;
   cout << endl;
   cout << "All seats are currently free in the theater shown above, there are "
           "ten rows and thirty columns on each row."
@@ -133,6 +137,7 @@ int main() {
     cout << "Do you want to reserve one seat or muliple seats?" << endl;
     cout << "(A) = One seat" << endl;
     cout << "(B) = Muliple seats" << endl;
+    cout << "(C) = Exit reservation" << endl;
     cout << "Answer: ";
     cin >> choiceSeat;
     switch(choiceSeat){
@@ -170,12 +175,21 @@ int main() {
         cout << endl;
         cout << "Sorry, the seat has been taken.";
       }
+      break;
      case 'B':
-      cout << "How many seats do you have in mind? " << endl;
-      cout << "Number of Seats: ";
+      cout << "How many seats in a row do you want to reserve? " << endl;
+      cout << "Number of Seats ( Min 1 and Max 30 ) : ";
       cin >> numSeats;
-      do {
-        cout << "What are the rows?" << endl;
+            if (cin.fail() ||  numSeats > 30 || numSeats <= 0) {
+          while (cin.fail() || numSeats > 30 || numSeats <= 0) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Please enter the number of seats in a row" << endl;
+            cout << "Number of Seats ( Min 1 and Max 30 ) : ";
+            cin >> numSeats;
+          }
+        }
+        cout << "What is the row?" << endl;
         cout << "Row: ";
         cin >> rowNum;
         if (cin.fail() || rowNum > 10 || rowNum <= 0) {
@@ -187,13 +201,11 @@ int main() {
             cin >> rowNum;
           }
         }
-        mulipleRows.push_back(rowNum);
-      } while (mulipleRows.size() < numSeats);
       do {
         cout << "Column: ";
         cin >> colNum;
-        if (cin.fail() || colNum > 30 || colNum <= 0) {
-          while (cin.fail() || colNum > 10 || colNum <= 0) {
+        if (cin.fail() || colNum <= 30 || colNum <= 0) {
+          while (cin.fail() || colNum <= 10 || colNum <= 0) {
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Please enter only integers between 1 - 30 columns" << endl;
@@ -213,13 +225,20 @@ int main() {
         cout << endl;
         cout << "Sorry, the seat has been taken.";
       }
-    case !'A' && !'B':
-    while(choiceSeat != 'A' && choiceSeat != 'B' ){
+      break;
+    case 'C':
+
+    default:
+    while(choiceSeat != 'A' && choiceSeat != 'B' && choiceSeat != 'C' ){
     cout << "Please Enter A or B" << endl;
     cout << "Do you want to reserve one seat or muliple seats?" << endl;
     cout << "(A) = One seat" << endl;
     cout << "(B) = Muliple seats" << endl;
+    cout << "(C) = Exit reservation" << endl;
+    cin >> choiceSeat;
     }
+
+break;
   }
   } else if (decisionReserve == 'N' || 'n') {
 
