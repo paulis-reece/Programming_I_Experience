@@ -29,30 +29,43 @@ void printSeats(char array[row][column]) {
   cout << endl;
   cout << "Back Row Seats" << endl;
 }
-void printInitializedSeats(char array[row][column], vector<int> money, int &Revenue , bool successOrFail) {
+void printInitializedSeats(char array[row][column], vector<int> money,
+                           int &Revenue, bool &successOrFail) {
   cout << "Front Row Seats" << endl;
   cout << endl;
   for (int r = 1; r <= row; r++) {
     for (int c = 1; c <= column; c++) {
       if (array[r][c] == '*') {
         cout << '*';
-Revenue += money[r];
-successOrFail = true;
+        Revenue += money[r];
+        successOrFail = true;
       } else {
         cout << '#';
-successOrFail = false;
       }
     }
     cout << endl;
+  }
+  if (successOrFail != true) {
+    successOrFail = false;
+  } else {
+    successOrFail = true;
   }
   cout << endl;
   cout << "Back Row Seats" << endl;
 }
 
 void reservation(int Rows, int Cols, char array[row][column]) {
-  if (array[Rows][Cols] == '#') {
+  if (array[Rows][Cols] != '*') {
     array[Rows][Cols] = '*';
   }
+}
+
+void mulipleReservation(vector<int> ROWS, vector<int> COLUMNS, char array[row][column], int &Revenue){
+for(int r = 0; r < ROWS.size(); r++){
+    for(int c = 0;c < COLUMNS.size(); c++){
+    
+    }
+}
 }
 
 int main() {
@@ -63,11 +76,14 @@ int main() {
   int colNum;
   int Revenue = 0;
   int finalRevenue = 0;
+  int numSeats = 0;
   char printSeat[row][column];
   char initializeSeat[row][column];
   char decisionReserve;
   char choiceSeat;
   bool successOrFail;
+  vector<int> mulipleRows(0);
+  vector<int> mulipleCols(0);
   vector<int> priceRows(0);
   cout << "Front Row Seats" << endl;
   cout << endl;
@@ -106,11 +122,6 @@ int main() {
     counter++;
   }
   cout << endl;
-  for (int r = 1; r <= row; r++) {
-    for (int c = 1; c <= column; c++) {
-      initializeSeat[r][c] = '#';
-    }
-  }
   cout << "Are there any seats you want to reserve? (Y)es or (N)o " << endl;
   cout << "Response: ";
   cin >> decisionReserve;
@@ -147,7 +158,7 @@ int main() {
       cout << endl;
       reservation(rowNum, colNum, initializeSeat);
       printInitializedSeats(initializeSeat, priceRows, Revenue, successOrFail);
-      if( successOrFail == true){
+      if (successOrFail == true) {
         cout << endl;
         cout << "You have successfully secure a seat";
       } else {
@@ -155,7 +166,48 @@ int main() {
         cout << "Sorry, the seat has been taken.";
       }
     } else if (choiceSeat == 'B' || 'b') {
-
+      cout << "How many seats do you have in mind? " << endl;
+      cout << "Number of Seats: ";
+      cin >> numSeats;
+do{
+     cout << "What are the rows?" << endl;
+      cout << "Row: ";
+      cin >> rowNum;
+      if (cin.fail() || rowNum > 10 || rowNum <= 0) {
+        while (cin.fail() || rowNum > 10 || rowNum <= 0) {
+          cin.clear();
+          cin.ignore(1000, '\n');
+          cout << "Please enter only integers between 1 - 10 rows" << endl;
+          cout << "Row: ";
+          cin >> rowNum;
+        }
+      }
+      mulipleRows.push_back(rowNum);
+} while(mulipleRows.size() < numSeats);
+do{
+      cout << "Column: ";
+      cin >> colNum;
+      if (cin.fail() || colNum > 30 || colNum <= 0) {
+        while (cin.fail() || colNum > 10 || colNum <= 0) {
+          cin.clear();
+          cin.ignore(1000, '\n');
+          cout << "Please enter only integers between 1 - 30 columns" << endl;
+          cout << "Column: ";
+          cin >> colNum;
+        }
+      }
+ mulipleCols.push_back(colNum);
+}while(mulipleCols.size() < numSeats);
+      cout << endl;
+      mulipleReservation(mulipleRows, mulipleCols, initializeSeat, Revenue);
+      printInitializedSeats(initializeSeat, priceRows, Revenue, successOrFail);
+      if (successOrFail == true) {
+        cout << endl;
+        cout << "You have successfully secure a seat";
+      } else {
+        cout << endl;
+        cout << "Sorry, the seat has been taken.";
+      }
     } else if (choiceSeat != 'A' && choiceSeat != 'a' && choiceSeat != 'B' &&
                choiceSeat != 'b') {
     }
