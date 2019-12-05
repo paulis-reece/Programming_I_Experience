@@ -33,7 +33,9 @@ void printInitializedSeats(char array[row][column], vector<int> money,
                            int &Revenue, bool &successOrFail) {
   cout << "Front Row Seats" << endl;
   cout << endl;
+ 
   for (int r = 1; r <= row; r++) {
+    
     for (int c = 1; c <= column; c++) {
       if (array[r][c] == '*') {
         cout << '*';
@@ -99,7 +101,6 @@ int main() {
           "ten rows and thirty columns on each row."
        << endl;
   cout << "The prices for each row of seats is up to your discretion." << endl;
-  cout << "Total Revenue: $" << Revenue;
   do {
     cout << "Starting from the front row, what is the price for row "
          << rowCount << ": $";
@@ -134,7 +135,8 @@ int main() {
     cout << "(B) = Muliple seats" << endl;
     cout << "Answer: ";
     cin >> choiceSeat;
-    if (choiceSeat == 'A' || 'a') {
+    switch(choiceSeat){
+    case 'A':
       cout << "What seat do you want to reserve? " << endl;
       cout << "Row: ";
       cin >> rowNum;
@@ -168,7 +170,7 @@ int main() {
         cout << endl;
         cout << "Sorry, the seat has been taken.";
       }
-    } else if (choiceSeat == 'B' || 'b') {
+     case 'B':
       cout << "How many seats do you have in mind? " << endl;
       cout << "Number of Seats: ";
       cin >> numSeats;
@@ -211,9 +213,14 @@ int main() {
         cout << endl;
         cout << "Sorry, the seat has been taken.";
       }
-    } else if (choiceSeat != 'A' && choiceSeat != 'a' && choiceSeat != 'B' &&
-               choiceSeat != 'b') {
+    case !'A' && !'B':
+    while(choiceSeat != 'A' && choiceSeat != 'B' ){
+    cout << "Please Enter A or B" << endl;
+    cout << "Do you want to reserve one seat or muliple seats?" << endl;
+    cout << "(A) = One seat" << endl;
+    cout << "(B) = Muliple seats" << endl;
     }
+  }
   } else if (decisionReserve == 'N' || 'n') {
 
   } else if (decisionReserve != 'Y' && decisionReserve != 'y' &&
