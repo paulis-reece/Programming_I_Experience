@@ -60,12 +60,15 @@ void reservation(int Rows, int Cols, char array[row][column]) {
   }
 }
 
-void mulipleReservation(vector<int> ROWS, vector<int> COLUMNS, char array[row][column], int &Revenue){
-for(int r = 0; r < ROWS.size(); r++){
-    for(int c = 0;c < COLUMNS.size(); c++){
-    
+void mulipleReservation(vector<int> ROWS, vector<int> COLUMNS,
+                        char array[row][column], int &Revenue) {
+  for (int r = 0; r < ROWS.size(); r++) {
+    for (int c = 0; c < COLUMNS.size(); c++) {
+      if (array[ROWS.at(r)][COLUMNS.at(c)] != '*') {
+        array[ROWS.at(r)][COLUMNS.at(c)] = '*';
+      }
     }
-}
+  }
 }
 
 int main() {
@@ -169,35 +172,35 @@ int main() {
       cout << "How many seats do you have in mind? " << endl;
       cout << "Number of Seats: ";
       cin >> numSeats;
-do{
-     cout << "What are the rows?" << endl;
-      cout << "Row: ";
-      cin >> rowNum;
-      if (cin.fail() || rowNum > 10 || rowNum <= 0) {
-        while (cin.fail() || rowNum > 10 || rowNum <= 0) {
-          cin.clear();
-          cin.ignore(1000, '\n');
-          cout << "Please enter only integers between 1 - 10 rows" << endl;
-          cout << "Row: ";
-          cin >> rowNum;
+      do {
+        cout << "What are the rows?" << endl;
+        cout << "Row: ";
+        cin >> rowNum;
+        if (cin.fail() || rowNum > 10 || rowNum <= 0) {
+          while (cin.fail() || rowNum > 10 || rowNum <= 0) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Please enter only integers between 1 - 10 rows" << endl;
+            cout << "Row: ";
+            cin >> rowNum;
+          }
         }
-      }
-      mulipleRows.push_back(rowNum);
-} while(mulipleRows.size() < numSeats);
-do{
-      cout << "Column: ";
-      cin >> colNum;
-      if (cin.fail() || colNum > 30 || colNum <= 0) {
-        while (cin.fail() || colNum > 10 || colNum <= 0) {
-          cin.clear();
-          cin.ignore(1000, '\n');
-          cout << "Please enter only integers between 1 - 30 columns" << endl;
-          cout << "Column: ";
-          cin >> colNum;
+        mulipleRows.push_back(rowNum);
+      } while (mulipleRows.size() < numSeats);
+      do {
+        cout << "Column: ";
+        cin >> colNum;
+        if (cin.fail() || colNum > 30 || colNum <= 0) {
+          while (cin.fail() || colNum > 10 || colNum <= 0) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Please enter only integers between 1 - 30 columns" << endl;
+            cout << "Column: ";
+            cin >> colNum;
+          }
         }
-      }
- mulipleCols.push_back(colNum);
-}while(mulipleCols.size() < numSeats);
+        mulipleCols.push_back(colNum);
+      } while (mulipleCols.size() < numSeats);
       cout << endl;
       mulipleReservation(mulipleRows, mulipleCols, initializeSeat, Revenue);
       printInitializedSeats(initializeSeat, priceRows, Revenue, successOrFail);
