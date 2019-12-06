@@ -10,10 +10,12 @@ Project 3
 #include <iomanip>  // for format output
 #include <iostream> // for cout and cin
 #include <vector>   // for vectors
+#include <fstream> 
 using namespace std;
 
 // Functions and Global Variable
-
+ofstream fout;
+ifstream fin;
 // Functions
 char menu(char Choices) {
   cout << "Welcome to the reservation seat program" << endl;
@@ -55,8 +57,22 @@ void updateRowCol(int &row, int &column) {
   row = row;
   column = column;
 }
-void printToConfig(int &priceRows, int &row , int &column){
+void printToConfig(vector<double> &priceRows, int &row, int &column) {
+fout.open("theater.txt");
+if(!fout.is_open()){
+    cout << "Could not be open" << endl;
+} else {
+    fout << row << endl;
+    fout << column << endl;
 
+    for(int i =0; i < row; i++){
+        fout << priceRows.at(i) << endl;
+    }
+}
+fout.close();
+}
+void readFromConfig(vector<double> &priceRows, int &row, int &column){
+    
 }
 
 int main() {
@@ -166,6 +182,7 @@ int main() {
       }
       rowCount++;
     } while (priceRows.size() < row);
+    printToConfig(priceRows,row, column);
     cout << endl;
     cout << "Here are the prices for each row:" << endl;
     for (int r = 0; r < priceRows.size(); r++) {
