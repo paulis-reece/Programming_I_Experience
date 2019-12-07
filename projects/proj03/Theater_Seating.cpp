@@ -373,15 +373,18 @@ int main() {
             }
             cout << endl;
           }
+          Revenue = money;
+          cout << Revenue << endl;
+          soldTickets = ticketCount;
+          cout << soldTickets << endl;
+          tickets = tickets - soldTickets;
+          cout << tickets;
+          readingToConfig(tickets, soldTickets, Revenue);
           loopCount++;
           if (successOrFail != true) {
             successOrFail = false;
           } else {
             successOrFail = true;
-            Revenue = money;
-            soldTickets = ticketCount;
-            tickets = tickets - soldTickets;
-            readingToConfig(tickets, soldTickets, Revenue);
           }
           cout << endl;
           cout << "Back Row Seats" << endl;
@@ -528,10 +531,6 @@ int main() {
             successOrFail = false;
           } else {
             successOrFail = true;
-            Revenue = money;
-            soldTickets = ticketCount;
-            tickets = tickets - soldTickets;
-            readingToConfig(tickets, soldTickets, Revenue);
           }
           cout << endl;
           cout << "Back Row Seats" << endl;
