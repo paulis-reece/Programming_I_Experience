@@ -53,7 +53,7 @@ char menuMain(char Choices) {
   return Choices;
 }
 void updateRowCol(int &row, int &column) {
-  cout << "How big do you want your theater to be?" << endl;
+  cout << "Size of theater" << endl;
   cout << "Row: ";
   cin >> row;
   if (cin.fail() || row <= 0) {
@@ -159,6 +159,7 @@ int main() {
   char decisionReserve;
   char menu;
   bool successOrFail;
+  bool verdict;
   bool decide = false;
   vector<int> priceRows(0);
   do {
@@ -170,15 +171,14 @@ int main() {
     do {
       cout << "Row " << rowCount << ": $";
       cin >> price;
-      if (price < 0) {
-        while (price < 0) {
+      if (price < 0 || cin.fail()) {
+        while (price < 0 || cin.fail()) {
           cout << endl;
           cout << "Please enter a valid integer" << endl;
           cout << "what is the price for row " << rowCount << ": ";
           cin >> price;
           cout << endl;
         }
-
         priceRows.push_back(price);
       } else {
         priceRows.push_back(price);
@@ -253,7 +253,8 @@ int main() {
                << endl;
           cin >> decisionReserve;
         }
-      } else if (decisionReserve == 'Y' || decisionReserve == 'y') {
+      }
+      if (decisionReserve == 'Y' || decisionReserve == 'y') {
         decisionReserve = 'Y';
         if (tickets == 1) {
           cout << "Sorry only one seat is available, do you want to reserve "
@@ -376,7 +377,7 @@ int main() {
             } else {
               successOrFail = true;
               soldTickets = ticketCount;
-              tickets = tickets - soldTickets;
+              tickets--;
               temp = rowNum - 1;
               Revenue += priceRows.at(temp);
               readingToConfig(tickets, soldTickets, Revenue);
@@ -390,208 +391,180 @@ int main() {
               cout << endl;
               cout << "Sorry, the seat has been taken." << endl;
             }
-            if (tickets > 0) {
-              cout << "Do you want to reserve more? (Y)es or (N)o" << endl;
-              cout << "Response: ";
-              cin >> option;
-              if (option != 'Y' && option != 'y' && option != 'N' &&
-                  option != 'n') {
-                while (option != 'Y' && option != 'y' && option != 'N' &&
-                       option != 'n') {
-                  cout << "Please answer Y for yes and N for no" << endl;
-                  cout << "Response: ";
-                  cin >> option;
-                }
-              } else if (option == 'Y' && 'y') {
-                option = 'Y';
-              } else if (option == 'N' && option == 'n') {
-                option = 'N';
-                decisionReserve = 'N';
-              }
-            } else {
-              option = 'N';
-              decisionReserve = 'N';
-            }
-          } while (option == 'Y' && option == 'y');
+          } while (decisionReserve == 'Y' && decisionReserve == 'y');
           break;
         case 2:
           do {
-            do {
-              if (decide == true) {
-                cout << "Sorry, but can you re-enter your column range."
-                     << endl;
-                cout << "It surpassed the seat range you stated earlier."
-                     << endl;
-              }
-              cout << "How many seats in a row do you want to reserve? "
-                   << endl;
-              cout << "Number of Seats ( Min 2 and Max " << column << " )"
-                   << " : ";
-              cin >> numSeats;
-              if (cin.fail() || numSeats > column || numSeats <= 1) {
-                while (cin.fail() || numSeats > column || numSeats <= 1) {
-                  cin.clear();
-                  cin.ignore(1000, '\n');
-                  cout << "Please enter the number of seats in a row" << endl;
-                  cout << "Number of Seats ( Min 2 and Max 30 ) : ";
-                  cin >> numSeats;
-                }
-              }
-              cout << "What is the row?" << endl;
-              cout << "Row: ";
-              cin >> rowNum;
-              if (cin.fail() || rowNum > row || rowNum <= 0) {
-                while (cin.fail() || rowNum > row || rowNum <= 0) {
-                  cin.clear();
-                  cin.ignore(1000, '\n');
-                  cout << "Please enter only integers between 1 - " << row
-                       << " integers" << endl;
-                  cout << "Row: ";
-                  cin >> rowNum;
-                }
-              }
-              cout << "What are your columns" << endl;
-              cout << "From first Column ( Min 1 and Max " << column << " )"
-                   << " : ";
-              cin >> colNum;
-              if (cin.fail() || colNum > column || colNum <= 0) {
-                while (cin.fail() || colNum > column || colNum <= 0) {
-                  cin.clear();
-                  cin.ignore(1000, '\n');
-                  cout << "Please enter only integers between 1 - " << column
-                       << " integers" << endl;
-                  cout << "First Column ( Min 1 and Max " << column << " )"
-                       << " : ";
-                  cin >> colNum;
-                }
-              }
-              cout << "To last Column (between 1 to" << colNum << " integers"
-                   << " or from " << colNum;
-              cout << " to integers"
-                   << " )"
-                   << " : ";
-              cin >> colNum2;
-              if (cin.fail() || colNum2 > column || colNum2 <= 0 ||
-                  colNum2 == colNum) {
-                while (cin.fail() || colNum2 > column || colNum2 <= 0 ||
-                       colNum2 == colNum) {
-                  cin.clear();
-                  cin.ignore(1000, '\n');
-                  cout << "Please enter only integers between 1 to " << colNum
-                       << " integers"
-                       << " or from " << colNum;
-                  cout << " to " << column << endl;
-                  cout << "Last Column: ";
-                  cin >> colNum2;
-                }
-              }
-              colResult = (colNum2) - (colNum - 1);
-              if (colResult != numSeats) {
-                decide = true;
-              } else if (colResult == numSeats) {
-                decide = false;
-              }
-            } while (decide == true);
-            cout << endl;
-            for (int r = colNum - 1; r < colNum - 1; r++) {
-              for (int c = colNum - 1; c < colNum2 - 1; c++) {
-                if (initializeSeat[r][c] != '*') {
-                  initializeSeat[r][c] = '*';
-                  ticketCount++;
-                } else {
-                  successOrFail = false;
-                }
+            decisionReserve = 'Y';
+            if (decide == true) {
+              cout << "Sorry, but can you re-enter your column range." << endl;
+              cout << "It surpassed the seat range you stated earlier." << endl;
+            }
+            cout << "How many seats in a row do you want to reserve? " << endl;
+            cout << "Number of Seats ( Min 2 and Max " << column << " )"
+                 << " : ";
+            cin >> numSeats;
+            if (cin.fail() || numSeats > column || numSeats <= 1) {
+              while (cin.fail() || numSeats > column || numSeats <= 1) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Please enter the number of seats in a row" << endl;
+                cout << "Number of Seats ( Min 2 and Max 30 ) : ";
+                cin >> numSeats;
               }
             }
-            if (loopCount > 0) {
-              printRow = 0;
-              printCol = 1;
-            }
-            cout << "Front Row Seats" << endl;
-            cout << endl;
-            cout << "Tens    ";
-            for (int t = 1; t <= column; t++) {
-              if (t == 1) {
-                cout << "0";
-              } else if (t % 10 == 0) {
-                cout << t / 10;
-              } else {
-                cout << " ";
-              }
-            }
-            cout << endl;
-            cout << endl;
-            cout << "Column  ";
-            for (int c = 1; c <= column; c++) {
-              if (printCol == 10) {
-                printCol = printCol - printCol;
-              }
-              cout << printCol;
-              printCol++;
-            }
-            cout << endl;
-            cout << endl;
+            cout << "What is the row? (1 - " << row << ")" << endl;
 
-            for (int r = 1; r <= row; r++) {
-              printRow++;
-              if (printRow >= 10) {
-                cout << "Row " << printRow << "  ";
-              } else {
-                cout << "Row " << printRow << "   ";
+            cout << "Row: ";
+            cin >> rowNum;
+            if (cin.fail() || rowNum > row || rowNum <= 0) {
+              while (cin.fail() || rowNum > row || rowNum <= 0) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Please enter only integers between 1 - " << row
+                     << " integers" << endl;
+                cout << "Row: ";
+                cin >> rowNum;
               }
-              for (int c = 1; c <= column; c++) {
-                cout << initializeSeat[r][c];
-              }
-              cout << endl;
             }
-            loopCount++;
-            if (successOrFail == false) {
-              successOrFail = false;
-            } else {
-              successOrFail = true;
-              for (int c = 0; c < numSeats; c++) {
-                storage++;
+            cout << "What are your columns" << endl;
+            cout << "From first Column ( Min 1 and Max " << column << " )"
+                 << " : ";
+            cin >> colNum;
+            if (cin.fail() || colNum > column || colNum <= 0) {
+              while (cin.fail() || colNum > column || colNum <= 0) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Please enter only integers between 1 - " << column
+                     << " integers" << endl;
+                cout << "First Column ( Min 1 and Max " << column << " )"
+                     << " : ";
+                cin >> colNum;
               }
-              soldTickets = ticketCount;
-              tickets = tickets - soldTickets;
-              temp = rowNum - 1;
-              Revenue = priceRows.at(temp) * storage;
-              readingToConfig(tickets, soldTickets, Revenue);
+            }
+            cout << "To last Column (between " << colNum << " to Max"
+                 << " or descending if possible)"
+                 << " : ";
+            cin >> colNum2;
+            if (cin.fail() || colNum2 > column || colNum2 <= 0 ||
+                colNum2 == colNum) {
+              while (cin.fail() || colNum2 > column || colNum2 <= 0 ||
+                     colNum2 == colNum) {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Please enter only integers between " << colNum
+                     << " to " << column << "or descending if possible)" << endl;
+                cout << "Last Column: ";
+                cin >> colNum2;
+              }
+            }
+            if (colNum2 < colNum) {
+              colResult = colNum - (colNum2 - 1);
+            } else {
+              colResult = colNum2 - (colNum - 1);
+            }
+            if (colResult != numSeats) {
+              decide = false;
+            } else if (colResult == numSeats) {
+              decide = true;
+            }
+          } while (decide == false);
+          verdict = true;
+          if (colNum2 < colNum) {
+            for (int r = 0; r < 1; r++) {
+              for (int c = colNum2 - 1; c < colNum; c++) {
+                if (initializeSeat[r][c] == '*') {
+                  verdict = false;
+                }
+              }
+            }
+          } else {
+            for (int r = 0; r < 1; r++) {
+              for (int c = colNum - 1; c < colNum2; c++) {
+                if (initializeSeat[r][c] == '*') {
+                  verdict = false;
+                }
+              }
+            }
+          }
+          if (verdict == true && colNum2 < colNum) {
+            for (int r = 0; r < 1; r++) {
+              for (int c = colNum2 - 1; c < colNum; c++) {
+                initializeSeat[r][c] = '*';
+                ticketCount++;
+                tickets--;
+              }
+            }
+          } else if (verdict == true && colNum2 > colNum) {
+            for (int r = 0; r < 1; r++) {
+              for (int c = colNum - 1; c < colNum2; c++) {
+                initializeSeat[r][c] = '*';
+                ticketCount++;
+                tickets--;
+              }
+            }
+          }
+          if (loopCount > 0) {
+            printRow = 0;
+            printCol = 1;
+          }
+          cout << "Front Row Seats" << endl;
+          cout << endl;
+          cout << "Tens    ";
+          for (int t = 1; t <= column; t++) {
+            if (t == 1) {
+              cout << "0";
+            } else if (t % 10 == 0) {
+              cout << t / 10;
+            } else {
+              cout << " ";
+            }
+          }
+          cout << endl;
+          cout << endl;
+          cout << "Column  ";
+          for (int c = 0; c < column; c++) {
+            if (printCol == 10) {
+              printCol = printCol - printCol;
+            }
+            cout << printCol;
+            printCol++;
+          }
+          cout << endl;
+          cout << endl;
+
+          for (int r = 0; r < row; r++) {
+            printRow++;
+            if (printRow >= 10) {
+              cout << "Row " << printRow << "  ";
+            } else {
+              cout << "Row " << printRow << "   ";
+            }
+            for (int c = 0; c < column; c++) {
+              cout << initializeSeat[r][c];
             }
             cout << endl;
+          }
+          loopCount++;
+          if (verdict == false) {
+            ticketCount = 0;
+          } else {
+            verdict = true;
+            for (int c = 0; c < numSeats; c++) {
+              storage++;
+            }
+            soldTickets = ticketCount;
+            temp = rowNum - 1;
+            Revenue = priceRows.at(temp) * storage;
+            readingToConfig(tickets, soldTickets, Revenue);
+          }
+          if (verdict == true) {
+               cout << endl;
             cout << "Back Row Seats" << endl;
-            if (successOrFail == true) {
-              cout << endl;
-              cout << "You have successfully secure a seat" << endl;
-            } else {
-              cout << endl;
-              cout << "Sorry, the seat has been taken." << endl;
-            }
-            if (tickets > 0) {
-              cout << "Do you want to reserve more?" << endl;
-              cout << "Response: ";
-              cin >> option;
-              if (option != 'Y' && option != 'y' && option != 'N' &&
-                  option != 'n') {
-                while (option != 'Y' && option != 'y' && option != 'N' &&
-                       option != 'n') {
-                  cout << "Please answer Y for yes and N for no" << endl;
-                  cout << "Response: ";
-                  cin >> option;
-                }
-              } else if (option == 'Y' && 'y') {
-                option = 'Y';
-              } else if (option == 'N' && option == 'n') {
-                option = 'N';
-                decisionReserve = 'N';
-              }
-            } else if( tickets <= 1) {
-              option = 'N';
-              decisionReserve = 'N';
-              cout << "Sorry, we can't arrange more seating" << endl;
-              cout << "One seat is not enough" << endl;
-            }
-          } while (option == 'Y' && 'y');
+            cout << "You have successfully secure a seat" << endl;
+          } else {
+            cout << "Sorry, one or more seat has been taken." << endl;
+          }
           break;
         case 3:
           break;
