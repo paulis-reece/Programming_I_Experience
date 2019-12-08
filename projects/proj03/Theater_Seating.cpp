@@ -172,6 +172,7 @@ int main() {
   int colResult =
       0; // Check if the range of seats are equal to what the user wanted
   int counter = 1;      // Counts loops, iliteration, etc.
+  int loop = 0;         // Counts looping for main menu
   int numSeats = 0;     // Number of seats the user wants
   int choiceSeat;       // Decision on whether they want one or range of seats
   int sorry = 0;        // If the tickets are out or not enough
@@ -199,6 +200,10 @@ int main() {
     switch (menuMain(mainMenu)) {
       // If the user wants to recreate the program and start his/her own theater
     case 'D':
+      if (loop > 0) {
+        rowCount = 1;
+        counter = 1;
+      }
       updateRowCol(row, column); // Prompts user for number of rows and columns
       tickets =
           row * column; // Available Tickets branching of the rows and columns
@@ -223,8 +228,8 @@ int main() {
           priceRows.push_back(price);
         }
         rowCount++;
-      } while (priceRows.size() <= row); // Check to make sure that it does not
-                                         // go out of bounds of the rows stated
+      } while (priceRows.size() < row); // Check to make sure that it does not
+                                        // go out of bounds of the rows stated
       cout << endl;
       // Prints out in accordance to prices and rows
       cout << "Here are the prices for each row:" << endl;
@@ -695,6 +700,7 @@ int main() {
     } else if (menu == 'N' || menu == 'n') { // Exits the program
       exit(0);
     }
+    loop++;
   } while (menu == 'Y' ||
            menu == 'y'); // Check if they want to loop back to main menu or not
   return 0;
