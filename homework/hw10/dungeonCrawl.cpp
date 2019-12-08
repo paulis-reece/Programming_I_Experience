@@ -99,7 +99,7 @@ char getValidDirection() {
     } while (directions != 'n' && directions != 's' && directions != 'w' &&
              directions != 'e' && directions != 'r');
   }
- if (directions == 'r') {
+  if (directions == 'r') {
     return randomDirection();
   }
   return directions;
