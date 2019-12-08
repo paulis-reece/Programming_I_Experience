@@ -223,9 +223,8 @@ int main() {
           priceRows.push_back(price);
         }
         rowCount++;
-      } while (priceRows.size() <=
-               row); // Check to make sure that it does not
-                         // go out of bounds of the rows stated
+      } while (priceRows.size() <= row); // Check to make sure that it does not
+                                         // go out of bounds of the rows stated
       cout << endl;
       // Prints out in accordance to prices and rows
       cout << "Here are the prices for each row:" << endl;
