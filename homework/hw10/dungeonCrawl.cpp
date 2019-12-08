@@ -98,7 +98,8 @@ char getValidDirection() {
       cin >> directions;
     } while (directions != 'n' && directions != 's' && directions != 'w' &&
              directions != 'e' && directions != 'r');
-  } else if (directions == 'r') {
+  }
+ if (directions == 'r') {
     return randomDirection();
   }
   return directions;
