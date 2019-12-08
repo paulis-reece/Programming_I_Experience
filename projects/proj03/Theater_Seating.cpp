@@ -12,7 +12,10 @@ Project 3
 #include <iostream> // for cout and cin
 #include <vector>   // for vectors
 using namespace std;
-
+// Global Variables
+int Revenue = 0;     // Revenue gained from reservation of seats
+int tickets = 0;     // Available tickets
+int soldTickets = 0; // Sold tickets
 // Functions
 ofstream fout;
 ifstream fin;
@@ -80,28 +83,6 @@ void updateRowCol(int &row, int &column) {
     }
   }
 }
-void readingToConfig(int &tickets, int &soldTickets, int &Revenue) {
-  fout.open("money.txt");
-  if (!fout.is_open()) {
-    cout << "Could not be open" << endl;
-  } else {
-    fout << tickets << endl;
-    fout << soldTickets << endl;
-    fout << Revenue << endl;
-  }
-  fout.close();
-}
-void readingFromConfig(int &tickets, int &soldTickets, int &Revenue) {
-  fin.open("money.txt");
-  if (!fin.is_open()) {
-    cout << "Could not be open" << endl;
-  } else {
-    fin >> tickets;
-    fin >> soldTickets;
-    fin >> Revenue;
-  }
-  fin.close();
-}
 void printToConfig(vector<int> &priceRows, int &row, int &column) {
   fout.open("theater.txt");
   if (!fout.is_open()) {
@@ -134,11 +115,6 @@ void readFromConfig(vector<int> &priceRows, int &row, int &column) {
 char menuMain(char Choices);
 // Prompts User for the size of their theater (Row and Column)
 void updateRowCol(int &row, int &column);
-// Puts the data into 'money.txt' for tickets, sold tickets, and revenue gain in
-// a file
-void readingToConfig(int &tickets, int &soldTickets, int &Revenue);
-// Reads off the file data called 'money.txt'
-void readingFromConfig(int &tickets, int &soldTickets, int &Revenue);
 // Puts data of row prices, number of rows, and number of column into
 // 'theater.txt'
 void printToConfig(vector<int> &priceRows, int &row, int &column);
@@ -163,8 +139,6 @@ int main() {
   int printC =
       1; // Prints the number of columns corresponding to the seating chart
   int ticketCount = 0; // Counts of how many tickets were sold
-  int tickets = 0;     // Available tickets
-  int soldTickets = 0; // Sold tickets
   int rowCount = 1;    // Counts of how many rows
   int rowNum;          // The row the user wants to reserve
   int colNum;          // The column the user wants to reserve
@@ -177,14 +151,14 @@ int main() {
   int choiceSeat;       // Decision on whether they want one or range of seats
   int sorry = 0;        // If the tickets are out or not enough
   int price;            // The price for each row
-  int Revenue = 0;      // Revenue gained from reservation of seats
+  int pricelength = 0;  // Keep track of price loopingy
   char mainMenu;        // Choice from the Main Menu
   char decisionReserve; // Reservation for seats
   char menu;            // Choice for the user to see menu again
   bool successOrFail;   // If the seat is reserved or not (one seat)
   bool verdict;         // If the seat is reserved or not (range of seats)
   bool decide =
-      false; // If the range of seats is equal to the number of seats requested
+      true; // If the range of seats is equal to the number of seats requested
   vector<int> priceRows(0); // Prices corresponding to rows
   // Reads of the file 'theater.txt' and initializes the 2d array
   readFromConfig(priceRows, row, column);
@@ -204,15 +178,15 @@ int main() {
         rowCount = 1;
         counter = 1;
       }
+      pricelength = 0;
       updateRowCol(row, column); // Prompts user for number of rows and columns
       tickets =
           row * column; // Available Tickets branching of the rows and columns
-      readingToConfig(tickets, soldTickets, Revenue);
       cout << endl;
       // Prices stores into a vector, corresponding it to each row of the
       // seating chart
-      cout << "What is the price for each row?" << endl;
-      do {
+      while (pricelength < row) {
+        cout << "What is the price for row " << rowCount << "? " << endl;
         cout << "Row " << rowCount << ": $";
         cin >> price;
         if (price < 0 || cin.fail()) {
@@ -228,21 +202,20 @@ int main() {
           priceRows.push_back(price);
         }
         rowCount++;
-      } while (priceRows.size() < row); // Check to make sure that it does not
-                                        // go out of bounds of the rows stated
-      cout << endl;
-      // Prints out in accordance to prices and rows
-      cout << "Here are the prices for each row:" << endl;
-      for (int r = 0; r < priceRows.size(); r++) {
-        cout << "Row " << counter << ": $" << priceRows.at(r) << endl;
-        counter++;
+        pricelength++;
+      }
+      for (int r = 0; r < row; r++) {
+        for (int c = 0; c < column; c++) {
+          initializeSeat[r][c] = '#';
+        }
+        cout << endl;
       }
       printToConfig(priceRows, row, column); // Sends data to file 'theater.txt'
       break;
     case 'B':
+      readFromConfig(priceRows, row, column);
       // The reservation process begins
       do {
-        readingFromConfig(tickets, soldTickets, Revenue);
         if (tickets == 0) {
           cout << "Sorry sold out" << endl;
         }
@@ -401,8 +374,6 @@ int main() {
               tickets--;
               temp = rowNum - 1;
               Revenue += priceRows.at(temp);
-              readingToConfig(tickets, soldTickets,
-                              Revenue); // Inputs data to the file 'money.txt'
             }
             cout << endl;
             cout << "Back Row Seats" << endl;
@@ -420,7 +391,7 @@ int main() {
               decisionReserve = 'Y';
               // Check to see if the user entered the correct range of seats
               // they wanted after the it loops more than once
-              if (decide == true) {
+              if (decide == false) {
                 cout << "Sorry, but can you re-enter your column range."
                      << endl;
                 cout << "It surpassed the seat range you stated earlier."
@@ -592,8 +563,6 @@ int main() {
               soldTickets = ticketCount;
               temp = rowNum - 1;
               Revenue = priceRows.at(temp) * storage;
-              readingToConfig(tickets, soldTickets,
-                              Revenue); // Inputs data to file 'money.txt'
             }
             if (verdict == true) {
               cout << endl;
@@ -618,7 +587,7 @@ int main() {
       readFromConfig(priceRows, row, column); // Reads of the file theater.txt
       cout << "Here are the prices for each row:"
            << endl; // Prints out corresponding row to prices
-      for (int r = 0; r < priceRows.size(); r++) {
+      for (int r = 0; r < row; r++) {
         cout << "Row " << counter << ": $" << priceRows.at(r) << endl;
         counter++;
       }
@@ -675,7 +644,6 @@ int main() {
       break;
     case 'C':
       // Shows the statistics of the theater - Tickets and Revenue
-      readingFromConfig(tickets, soldTickets, Revenue);
       cout << "Current Available Tickets: " << tickets << endl;
       cout << "Sold Tickets: " << soldTickets << endl;
       cout << "Revenue: $" << Revenue << endl;
