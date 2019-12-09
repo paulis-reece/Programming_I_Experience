@@ -12,10 +12,6 @@ Project 3
 #include <iostream> // for cout and cin
 #include <vector>   // for vectors
 using namespace std;
-// Global Variables
-int Revenue = 0;     // Revenue gained from reservation of seats
-int tickets = 0;     // Available tickets
-int soldTickets = 0; // Sold tickets
 // Functions
 ofstream fout;
 ifstream fin;
@@ -111,8 +107,36 @@ void readFromConfig(vector<int> &priceRows, int &row, int &column) {
     fin.close();
   }
 }
+void readingToConfig(int &tickets, int &soldTickets, int &Revenue) {
+  fout.open("money.txt");
+  if (!fout.is_open()) {
+    cout << "Could not be open" << endl;
+  } else {
+    fout << tickets << endl;
+    fout << soldTickets << endl;
+    fout << Revenue << endl;
+  }
+  fout.close();
+}
+void readingFromConfig(int &tickets, int &soldTickets, int &Revenue) {
+  fin.open("money.txt");
+  if (!fin.is_open()) {
+    cout << "Could not be open" << endl;
+  } else {
+    fin >> tickets;
+    cout << endl;
+    fin >> soldTickets;
+    cout << endl;
+    fin >> Revenue;
+  }
+  fout.close();
+}
 // Main Menu (Prompts User to make a decision by using a Main Menu)
 char menuMain(char Choices);
+// Records data to file 'money.txt'
+void readingToConfig(int &tickets, int &soldTickets, int &Revenue);
+// Reads data to file 'money.txt'
+void readingFromConfig(int &tickets, int &soldTickets, int &Revenue);
 // Prompts User for the size of their theater (Row and Column)
 void updateRowCol(int &row, int &column);
 // Puts data of row prices, number of rows, and number of column into
@@ -122,15 +146,15 @@ void printToConfig(vector<int> &priceRows, int &row, int &column);
 void readFromConfig(vector<int> &priceRows, int &row, int &column);
 // int Main Function
 int main() {
-  int row;    // Row of the theater
-  int column; // Column of the theater
-  int storage =
-      0; // Calculate the revenue for a range of seats being taken in a rowCount
-  int temp;           // Corresponds row to prices of each row
-  int loopCount = 0;  // Keeps track if the user checks the seating chart more
-                      // than once, allow the data to be updated and consistent
-  int printCount = 0; // Counts of how many tens of power should be printed on
-                      // top of the seating chart
+  int row;             // Row of the theater
+  int column;          // Column of the theater
+  int Revenue = 0;     // Revenue gained from reservation of seats
+  int tickets = 0;     // Available tickets
+  int soldTickets = 0; // Sold tickets
+  int loopCount = 0;   // Keeps track if the user checks the seating chart more
+                       // than once, allow the data to be updated and consistent
+  int printCount = 0;  // Counts of how many tens of power should be printed on
+                       // top of the seating chart
   int printRow =
       0; // Prints the word Rows and corresponding number to the seating chart
   int printCol = 1; // Prints the word Columns and corresponding number to the
@@ -210,14 +234,19 @@ int main() {
         }
         cout << endl;
       }
+      soldTickets = 0;
+      Revenue = 0;
+      readingToConfig(tickets, soldTickets, Revenue);
       printToConfig(priceRows, row, column); // Sends data to file 'theater.txt'
       break;
     case 'B':
+      readingFromConfig(tickets, soldTickets, Revenue);
       readFromConfig(priceRows, row, column);
       // The reservation process begins
       do {
         if (tickets == 0) {
           cout << "Sorry sold out" << endl;
+          break;
         }
         cout << "Do you want to reserve a seat? (Y)es or (N)o "
              << endl; // Prompts user if they want to reserve a seat or not
@@ -372,8 +401,8 @@ int main() {
               successOrFail = true;
               soldTickets = ticketCount;
               tickets--;
-              temp = rowNum - 1;
-              Revenue += priceRows.at(temp);
+              Revenue += priceRows.at(rowNum - 1);
+              readingToConfig(tickets, soldTickets, Revenue);
             }
             cout << endl;
             cout << "Back Row Seats" << endl;
@@ -476,7 +505,7 @@ int main() {
             // Starts the initailizing process of the 2d array (colNum2 means
             // final column range and colNum is the inital column range)
             if (colNum2 < colNum) {
-              for (int r = 0; r < 1; r++) {
+              for (int r = rowNum - 1; r < rowNum; r++) {
                 for (int c = colNum2 - 1; c < colNum; c++) {
                   if (initializeSeat[r][c] == '*') {
                     verdict = false;
@@ -484,7 +513,7 @@ int main() {
                 }
               }
             } else {
-              for (int r = 0; r < 1; r++) {
+              for (int r = rowNum - 1; r <= rowNum + 1; r++) {
                 for (int c = colNum - 1; c < colNum2; c++) {
                   if (initializeSeat[r][c] == '*') {
                     verdict = false;
@@ -493,7 +522,7 @@ int main() {
               }
             }
             if (verdict == true && colNum2 < colNum) {
-              for (int r = 0; r < 1; r++) {
+              for (int r = rowNum - 1; r < rowNum; r++) {
                 for (int c = colNum2 - 1; c < colNum; c++) {
                   initializeSeat[r][c] = '*';
                   ticketCount++;
@@ -501,7 +530,7 @@ int main() {
                 }
               }
             } else if (verdict == true && colNum2 > colNum) {
-              for (int r = 0; r < 1; r++) {
+              for (int r = rowNum - 1; r < rowNum; r++) {
                 for (int c = colNum - 1; c < colNum2; c++) {
                   initializeSeat[r][c] = '*';
                   ticketCount++;
@@ -557,12 +586,9 @@ int main() {
               ticketCount = 0;
             } else {
               verdict = true;
-              for (int c = 0; c < numSeats; c++) {
-                storage++;
-              }
               soldTickets = ticketCount;
-              temp = rowNum - 1;
-              Revenue = priceRows.at(temp) * storage;
+              Revenue += priceRows.at(rowNum - 1) * numSeats;
+              readingToConfig(tickets, soldTickets, Revenue);
             }
             if (verdict == true) {
               cout << endl;
@@ -644,6 +670,7 @@ int main() {
       break;
     case 'C':
       // Shows the statistics of the theater - Tickets and Revenue
+      readingFromConfig(tickets, soldTickets, Revenue);
       cout << "Current Available Tickets: " << tickets << endl;
       cout << "Sold Tickets: " << soldTickets << endl;
       cout << "Revenue: $" << Revenue << endl;
