@@ -36,10 +36,12 @@ bool isLoShu(int array[][SIZE], int rows) {
   int counter = 0;
   int comparisonArray[3][3];
   bool loShuMagicSquare;
+  bool yes;
   if (array != comparisonArray) {
     loShuMagicSquare = false;
     return loShuMagicSquare;
-  } else {
+  }
+   if (array == comparisonArray){
     for (int r = 1; r <= SIZE; r++) {
       for (int c = 1; c <= SIZE; c++) {
         if (array[r][c] == array[1][1] || array[r][c] == array[1][2] ||
@@ -111,11 +113,17 @@ bool isLoShu(int array[][SIZE], int rows) {
           if (storageRow == storeCol && storageRow == store &&
               storeCol == store) {
             loShuMagicSquare = true;
+            yes = true;
           }
         }
       }
     } else {
       loShuMagicSquare = false;
+      yes = false;
     }
+  }
+  if (array == comparisonArray && yes == true) {
+    loShuMagicSquare = true;
+    return loShuMagicSquare;
   }
 }
