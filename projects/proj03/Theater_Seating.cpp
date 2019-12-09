@@ -637,6 +637,8 @@ int main() {
               }
               if (ans == 'N' || ans == 'n') {
                 verdict = false;
+                ticketCount = 0;
+                tickets = row * column;
               }
               readingToConfig(tickets, soldTickets, Revenue);
             }
