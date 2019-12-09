@@ -36,7 +36,6 @@ bool isLoShu(int array[][SIZE], int rows) {
   int counter = 0;
   int comparisonArray[3][3];
   bool loShuMagicSquare;
-  bool yes;
   if (array != comparisonArray) {
     loShuMagicSquare = false;
     return loShuMagicSquare;
@@ -124,4 +123,5 @@ bool isLoShu(int array[][SIZE], int rows) {
     loShuMagicSquare = true;
     return loShuMagicSquare;
   }
+  return loShuMagicSquare;
 }
