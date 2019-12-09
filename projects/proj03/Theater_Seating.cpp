@@ -525,14 +525,16 @@ int main() {
             if (verdict == false) {
               ticketCount = 0;
             } else {
-              cout << "Do you want to pay $" << priceRows.at(rowNum - 1)
-                   << "? (Y)es or (N)o" << endl;
+              cout << "Do you want to pay $"
+                   << (priceRows.at(rowNum - 1) * numSeats) << "? (Y)es or (N)o"
+                   << endl;
               cout << "Response: ";
               cin >> ans;
               if (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
                 while (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
                   cout << "Please answer if you want to pay $"
-                       << priceRows.at(rowNum - 1) << "? (Y)es or (N)o" << endl;
+                       << (priceRows.at(rowNum - 1) * numSeats)
+                       << "? (Y)es or (N)o" << endl;
                   cout << "Response: ";
                   cin >> ans;
                 }
