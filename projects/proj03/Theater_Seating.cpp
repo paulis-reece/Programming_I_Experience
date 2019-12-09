@@ -179,6 +179,7 @@ int main() {
   char mainMenu;        // Choice from the Main Menu
   char decisionReserve; // Reservation for seats
   char menu;            // Choice for the user to see menu again
+  char ans;             // Answer for transaction
   bool successOrFail;   // If the seat is reserved or not (one seat)
   bool verdict;         // If the seat is reserved or not (range of seats)
   bool decide =
@@ -398,10 +399,33 @@ int main() {
             if (successOrFail == false) {
               successOrFail = false;
             } else {
-              successOrFail = true;
-              soldTickets = ticketCount;
-              tickets--;
-              Revenue += priceRows.at(rowNum - 1);
+              cout << "Do you want to pay $" << priceRows.at(rowNum - 1)
+                   << "? (Y)es or (N)o" << endl;
+              cout << "Response: ";
+              cin >> ans;
+              if (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
+                while (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
+                  cout << "Please answer if you want to pay $"
+                       << priceRows.at(rowNum - 1) << "? (Y)es or (N)o" << endl;
+                  cout << "Response: ";
+                  cin >> ans;
+                }
+              }
+              if (ans == 'Y' || ans == 'y') {
+                soldTickets = ticketCount;
+                tickets--;
+                Revenue += priceRows.at(rowNum - 1);
+              } else if (ans == 'N' || ans == 'n') {
+                for (int r = 0; r < row; r++) {
+                  for (int c = 0; c < column; c++) {
+                    initializeSeat[r][c] = '#';
+                  }
+                  cout << endl;
+                }
+              }
+              if (ans == 'N' || ans == 'n') {
+                successOrFail = false;
+              }
               readingToConfig(tickets, soldTickets, Revenue);
             }
             cout << endl;
@@ -411,7 +435,9 @@ int main() {
               cout << "You have successfully secure a seat" << endl;
             } else {
               cout << endl;
-              cout << "Sorry, the seat has been taken." << endl;
+              cout << "Sorry, the seat has been taken or you did not pay the "
+                      "transaction."
+                   << endl;
             }
           } else if (choiceSeat == 2) {
             // If the user select a range of seats, this reservation range of
@@ -585,9 +611,33 @@ int main() {
             if (verdict == false) {
               ticketCount = 0;
             } else {
-              verdict = true;
-              soldTickets = ticketCount;
-              Revenue += priceRows.at(rowNum - 1) * numSeats;
+              cout << "Do you want to pay $" << priceRows.at(rowNum - 1)
+                   << "? (Y)es or (N)o" << endl;
+              cout << "Response: ";
+              cin >> ans;
+              if (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
+                while (ans != 'Y' && ans != 'y' && ans != 'N' && ans != 'n') {
+                  cout << "Please answer if you want to pay $"
+                       << priceRows.at(rowNum - 1) << "? (Y)es or (N)o" << endl;
+                  cout << "Response: ";
+                  cin >> ans;
+                }
+              }
+              if (ans == 'Y' || ans == 'y') {
+                soldTickets = ticketCount;
+                tickets--;
+                Revenue += priceRows.at(rowNum - 1) * numSeats;
+              } else if (ans == 'N' || ans == 'n') {
+                for (int r = 0; r < row; r++) {
+                  for (int c = 0; c < column; c++) {
+                    initializeSeat[r][c] = '#';
+                  }
+                  cout << endl;
+                }
+              }
+              if (ans == 'N' || ans == 'n') {
+                verdict = false;
+              }
               readingToConfig(tickets, soldTickets, Revenue);
             }
             if (verdict == true) {
@@ -595,7 +645,9 @@ int main() {
               cout << "Back Row Seats" << endl;
               cout << "You have successfully secure a seat" << endl;
             } else {
-              cout << "Sorry, one or more seat has been taken." << endl;
+              cout << "Sorry, one or more seat has been taken or you did not "
+                      "pay the transaction."
+                   << endl;
             }
           } else if (choiceSeat == 3) {
           } else if (decisionReserve == 'N' || decisionReserve == 'n') {
