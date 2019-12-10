@@ -52,6 +52,28 @@ char menuMain(char Choices) {
   }
   return Choices;
 }
+void pricing(vector<int> &priceRows, int row, int pricelength, int rowCount,
+             int price) {
+  while (pricelength < row) {
+    cout << "What is the price for row " << rowCount << "? " << endl;
+    cout << "Row " << rowCount << ": $";
+    cin >> price;
+    if (price < 0 || cin.fail()) {
+      while (price < 0 || cin.fail()) {
+        cout << endl;
+        cout << "Please enter a valid integer" << endl;
+        cout << "what is the price for row " << rowCount << ": ";
+        cin >> price;
+        cout << endl;
+      }
+      priceRows.push_back(price);
+    } else {
+      priceRows.push_back(price);
+    }
+    rowCount++;
+    pricelength++;
+  }
+}
 void updateRowCol(int &row, int &column) {
   cout << "Size of theater" << endl;
   cout << "Row: ";
@@ -131,6 +153,9 @@ void readingFromConfig(int &tickets, int &soldTickets, int &Revenue) {
 }
 // Main Menu (Prompts User to make a decision by using a Main Menu)
 char menuMain(char Choices);
+// Fixing the price to correspond to Row
+void pricing(vector<int> &priceRows, int row, int pricelength, int rowCount,
+             int price);
 // Records data to file 'money.txt'
 void readingToConfig(int &tickets, int &soldTickets, int &Revenue);
 // Reads data to file 'money.txt'
@@ -168,7 +193,6 @@ int main() {
   int colResult =
       0; // Check if the range of seats are equal to what the user wanted
   int counter = 1;      // Counts loops, iliteration, etc.
-  int loop = 0;         // Counts looping for main menu
   int numSeats = 0;     // Number of seats the user wants
   int choiceSeat;       // Decision on whether they want one or range of seats
   int sorry = 0;        // If the tickets are out or not enough
@@ -198,10 +222,8 @@ int main() {
     switch (menuMain(mainMenu)) {
       // If the user wants to recreate the program and start his/her own theater
     case 'D':
-      if (loop > 0) {
-        rowCount = 1;
-        counter = 1;
-      }
+      rowCount = 1;
+      counter = 1;
       pricelength = 0;
       updateRowCol(row, column); // Prompts user for number of rows and columns
       tickets =
@@ -210,25 +232,7 @@ int main() {
       // Prices stores into a vector, corresponding it to each row of the
       // seating chart
       priceRows.clear();
-      while (pricelength < row) {
-        cout << "What is the price for row " << rowCount << "? " << endl;
-        cout << "Row " << rowCount << ": $";
-        cin >> price;
-        if (price < 0 || cin.fail()) {
-          while (price < 0 || cin.fail()) {
-            cout << endl;
-            cout << "Please enter a valid integer" << endl;
-            cout << "what is the price for row " << rowCount << ": ";
-            cin >> price;
-            cout << endl;
-          }
-          priceRows.push_back(price);
-        } else {
-          priceRows.push_back(price);
-        }
-        rowCount++;
-        pricelength++;
-      }
+      pricing(priceRows, row, pricelength, rowCount, price);
       printToConfig(priceRows, row, column); // Sends data to file 'theater.txt'
       for (int r = 0; r < row; r++) {
         for (int c = 0; c < column; c++) {
@@ -661,7 +665,6 @@ int main() {
     } else if (menu == 'N' || menu == 'n') { // Exits the program
       exit(0);
     }
-    loop++;
   } while (menu == 'Y' ||
            menu == 'y'); // Check if they want to loop back to main menu or not
   return 0;
