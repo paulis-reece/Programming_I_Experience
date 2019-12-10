@@ -12,6 +12,7 @@
 #include <iostream> // for cout and cin
 using namespace std;
 ofstream fout;
+ifstream fin;
 
 // prototype
 bool isPrime(int number);
@@ -21,8 +22,8 @@ int main() {
   string file;
   cout << "Input File: ";
   cin >> file;
-  fout.open(file);
-  if (!fout.is_open()) {
+  fin.open(file);
+  if (!fin.is_open()) {
     cout << "Error! Could not open file." << endl;
   } else {
     if (isPrime(number) == cin.fail()) {
