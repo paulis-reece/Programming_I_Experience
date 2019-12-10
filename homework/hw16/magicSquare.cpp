@@ -38,7 +38,8 @@ bool isLoShu(int array[][SIZE], int rows) {
   bool loShuMagicSquare;
   if (array != comparisonArray) {
     return false;
-  } else if (array == comparisonArray) {
+  }
+   if (array == comparisonArray) {
     for (int r = 1; r <= SIZE; r++) {
       for (int c = 1; c <= SIZE; c++) {
         if (array[r][c] == array[1][1] || array[r][c] == array[1][2] ||
