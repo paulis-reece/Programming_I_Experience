@@ -35,10 +35,6 @@ bool isLoShu(int array[][SIZE], int rows) {
   int store2 = 0;
   int counter = 0;
   int comparisonArray[rows][SIZE];
-  if (array != comparisonArray) {
-    return false;
-  }
-  if (array == comparisonArray) {
     for (int r = 1; r <= SIZE; r++) {
       for (int c = 1; c <= SIZE; c++) {
         if (array[r][c] == array[1][1] || array[r][c] == array[1][2] ||
@@ -113,5 +109,4 @@ bool isLoShu(int array[][SIZE], int rows) {
     } else {
       return false;
     }
-  }
 }

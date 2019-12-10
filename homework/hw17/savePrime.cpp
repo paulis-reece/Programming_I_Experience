@@ -24,7 +24,7 @@ int main() {
   cin >> file;
   do {
     if (cin.fail()) {
-      cout << "Invalid Input File.";
+      cout << "Error! Could not open file.";
       cin >> file;
     }
   } while (cin.fail());
@@ -32,7 +32,7 @@ int main() {
   fout.open("primes.txt");
   if (!fin.is_open()) {
     cout << "Error! Could not open file.";
-    return 1;
+    return 0;
   }
   while (!fin.eof()) {
     fin >> number;
@@ -47,9 +47,9 @@ int main() {
       fin.ignore(1000, '\n');
     }
   }
+  cout << "File succesfully processed.";
   fin.close();
   fout.close();
-  cout << "File succesfully processed.";
 }
 
 bool isPrime(int number) {
