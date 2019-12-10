@@ -17,6 +17,7 @@ ofstream fout;
 bool isPrime(int number);
 
 int main() {
+  int number;
   fout.open("primes.txt");
   if (!fout.is_open()) {
     cout << "Could not be open" << endl;
