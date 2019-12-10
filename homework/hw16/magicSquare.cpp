@@ -34,7 +34,7 @@ bool isLoShu(int array[][SIZE], int rows) {
   int store = 0;
   int store2 = 0;
   int counter = 0;
-  int comparisonArray[rows][SIZE];
+  int comparisonArray[SIZE];
   bool valid;
   for (int r = 1; r <= SIZE; r++) {
     for (int c = 1; c <= SIZE; c++) {
