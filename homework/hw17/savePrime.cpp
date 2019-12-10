@@ -22,22 +22,34 @@ int main() {
   string file;
   cout << "Input File: ";
   cin >> file;
-  fin.open(file);
-  if (!fin.is_open()) {
-    cout << "Error! Could not open file." << endl;
-  } else {
-    if (isPrime(number) == cin.fail()) {
-      cerr << number;
-      cout << "Error! Invalid number found." << endl;
+  do {
+    if (cin.fail()) {
+      cout << "Invalid Input File.";
+      cin >> file;
     }
-    if (isPrime(number) == true) {
+  } while (cin.fail());
+  fin.open(file);
+  fout.open("primes.txt");
+  if (!fin.is_open()) {
+    cout << "Error! Could not open file.";
+    return 1;
+  }
+  while (!fin.eof()) {
+    fin >> number;
+    if (fin.fail()) {
+      cerr << "Error! Invalid number found." << endl;
+    }
+    if (isPrime(number) == true)
       fout << number << endl;
-      cout << "File succesfully processed.";
-    } else if (isPrime(number) == false) {
-      cin.ignore(1000, '\n');
+
+    if (isPrime(number) == false) {
+      fin.clear();
+      fin.ignore(1000, '\n');
     }
   }
+  fin.close();
   fout.close();
+  cout << "File succesfully processed.";
 }
 
 bool isPrime(int number) {
