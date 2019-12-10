@@ -37,10 +37,8 @@ bool isLoShu(int array[][SIZE], int rows) {
   int comparisonArray[3][3];
   bool loShuMagicSquare;
   if (array != comparisonArray) {
-    loShuMagicSquare = false;
-    return loShuMagicSquare;
-  }
-  if (array == comparisonArray) {
+    return false;
+  } else if (array == comparisonArray) {
     for (int r = 1; r <= SIZE; r++) {
       for (int c = 1; c <= SIZE; c++) {
         if (array[r][c] == array[1][1] || array[r][c] == array[1][2] ||
@@ -100,28 +98,21 @@ bool isLoShu(int array[][SIZE], int rows) {
     store = r1c1 + r2c2 + r3c3;
     store2 = r3c1 + r2c2 + r1c3;
     if (counter == 9) {
-      loShuMagicSquare = true;
-    } else {
-      loShuMagicSquare = false;
-    }
-    if (storageRow == storageRow2 && storageRow == storageRow3 &&
-        storageRow2 == storageRow3) {
-      if (storeCol == storeCol2 && storeCol == storeCol3 &&
-          storeCol2 == storeCol3) {
-        if (store == store2) {
-          if (storageRow == storeCol && storageRow == store &&
-              storeCol == store) {
-            loShuMagicSquare = true;
+      if (storageRow == storageRow2 && storageRow == storageRow3 &&
+          storageRow2 == storageRow3) {
+        if (storeCol == storeCol2 && storeCol == storeCol3 &&
+            storeCol2 == storeCol3) {
+          if (store == store2) {
+            if (storageRow == storeCol && storageRow == store &&
+                storeCol == store) {
+              return true;
+            }
           }
         }
       }
     } else {
-      loShuMagicSquare = false;
+      return false;
     }
-  }
-  if (array == comparisonArray) {
-    loShuMagicSquare = true;
-    return loShuMagicSquare;
   }
   return loShuMagicSquare;
 }
