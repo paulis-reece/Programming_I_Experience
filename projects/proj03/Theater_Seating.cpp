@@ -20,9 +20,7 @@ char menuMain(char Choices) {
   cout << "---------------------------------------" << endl;
   cout << " A) Display a seating chart" << endl;
   cout << " B) Sell one or more tickets" << endl;
-  cout << " C) Display statistics such as the number of tickets sold, the "
-          "number of seats still available, the total revenue from ticket sales"
-       << endl;
+  cout << " C) Display statistics" << endl;
   cout << " D) Reset the program and re-enter the theater seating and pricing "
           "information"
        << endl;
