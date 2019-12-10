@@ -18,14 +18,20 @@ bool isPrime(int number);
 
 int main() {
   int number;
-  fout.open("primes.txt");
+  string file;
+  cout << "Input File: ";
+  cin >> file;
+  fout.open(file);
   if (!fout.is_open()) {
-    cout << "Could not be open" << endl;
+    cout << "Error! Could not open file." << endl;
   } else {
     if (isPrime(number) == cin.fail()) {
       cerr << number;
-    } else if (isPrime(number) == true) {
+      cout << "Error! Invalid number found." << endl;
+    }
+    if (isPrime(number) == true) {
       fout << number << endl;
+      cout << "File succesfully processed.";
     } else if (isPrime(number) == false) {
       cin.ignore(1000, '\n');
     }
