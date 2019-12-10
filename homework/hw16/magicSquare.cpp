@@ -112,12 +112,16 @@ bool isLoShu(int array[][SIZE], int rows) {
         if (store == store2) {
           if (storageRow == storeCol && storageRow == store &&
               storeCol == store) {
-            return loShuMagicSquare = true;
+            if (shape.size() == shaping.size()) {
+              loShuMagicSquare = true;
+              return loShuMagicSquare;
+            }
           }
         }
       }
     } else {
-      return loShuMagicSquare = false;
+      loShuMagicSquare = false;
+      return loShuMagicSquare;
     }
   }
   return loShuMagicSquare;
