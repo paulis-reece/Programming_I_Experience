@@ -34,11 +34,9 @@ int main() {
       fin >> number;
       if (fin.fail()) {
         cerr << "Error! Invalid number found." << endl;
-      }
-      if (isPrime(number) == true) {
+      } else if (isPrime(number) == true) {
         fout << number << endl;
-      }
-      if (isPrime(number) == false) {
+      } else if (isPrime(number) == false) {
         fin.clear();
         fin.ignore(1000, '\n');
       }
