@@ -35,9 +35,9 @@ int main() {
       if (fin.fail()) {
         cerr << "Error! Invalid number found." << endl;
       }
-      if (isPrime(number) == true)
+      if (isPrime(number) == true) {
         fout << number << endl;
-
+      }
       if (isPrime(number) == false) {
         fin.clear();
         fin.ignore(1000, '\n');
