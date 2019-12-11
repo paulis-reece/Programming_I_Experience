@@ -3,7 +3,7 @@
  * hw17: Read a file and output any prime numbers to another file
  *
  * File Name: savePrime.cpp
- * Name:      ?
+ * Name:      Reece Reklai
  * Course:    CPTR 141
  *
  */
@@ -46,10 +46,10 @@ int main() {
         fin.ignore(1000, '\n');
       }
     }
-    fout << "File succesfully processed.";
-    fin.close();
-    fout.close();
   }
+  fin.close();
+  fout.close();
+  fout << "File succesfully processed.";
 }
 
 bool isPrime(int number) {
