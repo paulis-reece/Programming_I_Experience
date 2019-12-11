@@ -31,7 +31,6 @@ bool isLoShu(int array[][SIZE], int rows) {
   if (shape.size() != shaping.size()) {
     factor = false;
   } else if (shape.size() == shaping.size()) {
-    factor = true;
     for (int r = 0; r < 3; r++) {
       for (int c = 0; c < 3; c++) {
         sumRow1 += array[0][c];
