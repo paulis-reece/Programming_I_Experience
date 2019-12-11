@@ -24,7 +24,6 @@ bool isLoShu(int array[][SIZE], int rows) {
   int sumCol3 = 0;
   int sumCross1 = 0;
   int sumCross2 = 0;
-  int counter = 0;
 
   sumRow1 += array[0][0] + array[0][1] + array[0][2];
   sumRow2 += array[1][0] + array[1][1] + array[1][2];
