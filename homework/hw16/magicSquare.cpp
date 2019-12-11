@@ -28,9 +28,7 @@ bool isLoShu(int array[][SIZE], int rows) {
   vector<int> shape(SIZE);
   vector<int> shaping(rows);
   bool factor;
-  if (shape.size() != shaping.size()) {
-    factor = false;
-  } else if (shape.size() == shaping.size()) {
+  if (shape.size() == shaping.size()) {
     factor = true;
     for (int r = 0; r < 3; r++) {
       for (int c = 0; c < 3; c++) {
@@ -62,6 +60,8 @@ bool isLoShu(int array[][SIZE], int rows) {
     } else {
       factor = false;
     }
+  } else {
+    factor = false;
   }
   return factor;
 }
