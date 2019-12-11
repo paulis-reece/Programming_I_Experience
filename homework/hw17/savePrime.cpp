@@ -23,17 +23,19 @@ int main() {
   cout << "Input File: ";
   cin >> file;
   if (cin.fail()) {
-    cout << "Error! Could not open file.";
+    cerr << "Error! Could not open file.";
   }
   fin.open(file);
   fout.open("primes.txt");
   if (!fin.is_open()) {
-    cout << "Error! Could not open file.";
+    cerr << "Error! Could not open file.";
   } else {
     while (!fin.eof()) {
       fin >> number;
       if (fin.fail()) {
         cerr << "Error! Invalid number found." << endl;
+        fin.clear();
+        fin.ignore(1000, '\n');
       } else if (isPrime(number) == true) {
         fout << number << endl;
       } else if (isPrime(number) == false) {
