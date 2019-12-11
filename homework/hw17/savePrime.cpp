@@ -36,7 +36,7 @@ int main() {
     while (!fin.eof()) {
       fin >> number;
       if (fin.fail()) {
-        cerr << "Error! Invalid number found." << endl;
+        cerr << "Error! Invalid number found.";
       }
       if (isPrime(number) == true)
         fout << number << endl;
@@ -46,6 +46,7 @@ int main() {
         fin.ignore(1000, '\n');
       }
     }
+    cout << "File succesfully processed.";
   }
   fin.close();
   fout.close();
