@@ -33,18 +33,16 @@ int main() {
   if (!fin.is_open()) {
     cout << "Error! Could not open file.";
   } else {
-    while (!fin.eof()) {
-      fin >> number;
-      if (fin.fail()) {
-        cerr << "Error! Invalid number found." << endl;
-      }
-      if (isPrime(number) == true)
-        fout << number << endl;
+    fin >> number;
+    if (fin.fail()) {
+      cerr << "Error! Invalid number found." << endl;
+    }
+    if (isPrime(number) == true)
+      fout << number << endl;
 
-      if (isPrime(number) == false) {
-        fin.clear();
-        fin.ignore(1000, '\n');
-      }
+    if (isPrime(number) == false) {
+      fin.clear();
+      fin.ignore(1000, '\n');
     }
   }
   fin.close();
