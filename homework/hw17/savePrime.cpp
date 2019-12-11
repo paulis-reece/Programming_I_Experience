@@ -41,6 +41,8 @@ int main() {
         fin.ignore(1000, '\n');
       }
     }
+  }
+  if (fin.is_open()) {
     cout << "File succesfully processed.";
   }
   fin.close();
