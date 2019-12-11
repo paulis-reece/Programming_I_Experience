@@ -25,7 +25,6 @@ bool isLoShu(int array[][SIZE], int rows) {
   int sumCross1 = 0;
   int sumCross2 = 0;
   int counter = 0;
-  bool loShuMagicSquare;
   vector<int> shape(SIZE);
   vector<int> shaping(rows);
   if (shape.size() != shaping.size()) {
