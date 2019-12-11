@@ -49,7 +49,7 @@ int main() {
   }
   fin.close();
   fout.close();
-  fout << "File succesfully processed.";
+  cout << "File succesfully processed.";
 }
 
 bool isPrime(int number) {
