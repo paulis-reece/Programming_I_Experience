@@ -24,7 +24,6 @@ int main() {
   cin >> file;
   if (cin.fail()) {
     cout << "Error! Could not open file.";
-    cout << "File succesfully processed.";
   }
   fin.open(file);
   fout.open("primes.txt");
@@ -34,7 +33,7 @@ int main() {
     while (!fin.eof()) {
       fin >> number;
       if (fin.fail()) {
-        cerr << "Error! Invalid number found.";
+        cerr << "Error! Invalid number found." << endl;
       }
       if (isPrime(number) == true)
         fout << number << endl;
